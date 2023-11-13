@@ -1,7 +1,6 @@
 package christmas.domain.event
 
-import christmas.domain.EventType
-import christmas.domain.EventType.*
+import christmas.domain.event.EventType.*
 import christmas.domain.Reservation
 
 object EventFactory {

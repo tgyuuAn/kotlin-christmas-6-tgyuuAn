@@ -1,7 +1,7 @@
 package christmas.domain.event
 
-import christmas.domain.EventType.*
-import christmas.domain.MenuItem.*
+import christmas.domain.event.EventType.*
+import christmas.domain.menu.MenuItem.*
 import christmas.domain.Reservation
 import christmas.uitl.MoneyUnit.HUNDRED_UNIT
 import christmas.uitl.MoneyUnit.THOUSAND_UNIT
