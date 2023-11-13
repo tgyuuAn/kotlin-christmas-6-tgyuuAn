@@ -14,7 +14,7 @@ class WeekdayEvent(
 
     override fun isEligibleDayForEvent(): Boolean {
         val day = (reservation.visitDate % WEEK_LENGTH)
-        return day != FRIDAY && day != SATURDAY
+        return (day != FRIDAY) && (day != SATURDAY)
     }
 
     override fun calculateDiscountAmount(): Int {
