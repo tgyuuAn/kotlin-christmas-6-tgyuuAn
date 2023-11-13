@@ -13,7 +13,7 @@ class ChristmasDdayEventTest {
 
     @ParameterizedTest
     @ValueSource(ints = [26, 27, 28, 29, 30, 31])
-    fun `예약 날짜가 26일 이상일 경우 할인을 받지 못한다`(reservationDate: Int) {
+    fun `예약 날짜가 26일 이상일 경우 할인 혜택을 받을 수 없다`(reservationDate: Int) {
         //given
         val reservation =
             Reservation(listOf(MenuItem.MUSHROOM_SOUP, MenuItem.MUSHROOM_SOUP), reservationDate)
@@ -28,7 +28,7 @@ class ChristmasDdayEventTest {
 
     @ParameterizedTest
     @ValueSource(ints = [25, 24, 23, 22, 21])
-    fun `예약 날짜가 25일 이하일 경우 할인을 받지 못한다`(reservationDate: Int) {
+    fun `예약 날짜가 25일 이하일 경우 할인 혜택을 받을 수 있다`(reservationDate: Int) {
         //given
         val reservation =
             Reservation(listOf(MenuItem.MUSHROOM_SOUP, MenuItem.MUSHROOM_SOUP), reservationDate)
@@ -42,7 +42,7 @@ class ChristmasDdayEventTest {
     }
 
     @Test
-    fun `총 음식 예약 금액이 10000원 이하일 경우 할인 혜택을 받지 못한다`() {
+    fun `총 음식 예약 금액이 10000원 이하일 경우 할인 혜택을 받을 수 없다`() {
         //given
         val reservation =
             Reservation(listOf(MenuItem.MUSHROOM_SOUP), 3)
@@ -56,7 +56,7 @@ class ChristmasDdayEventTest {
     }
 
     @Test
-    fun `예약 메뉴가 음료로만 되어 있을 경우 혜택을 받을 수 없다`() {
+    fun `예약 메뉴가 음료로만 되어 있을 경우 할인 혜택을 받을 수 없다`() {
         //given
         val reservation = Reservation(listOf(MenuItem.CHAMPAGNE), 3)
         val christmasDdayEvent = ChristmasDdayEvent(reservation = reservation)
