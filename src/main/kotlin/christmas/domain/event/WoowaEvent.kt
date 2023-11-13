@@ -1,6 +1,5 @@
 package christmas.domain.event
 
-import christmas.domain.MenuItem
 import christmas.domain.MenuType
 import christmas.domain.Reservation
 
@@ -24,10 +23,14 @@ abstract class WoowaEvent(private val reservation: Reservation) {
     }
 
     private fun isTotalAmountEligible(): Boolean {
-        return reservation.getTotalAmount() >= 10000
+        return reservation.getTotalAmount() >= EVENT_MINIMUM_AMOUNT
     }
 
     private fun isAllMenusAreBeverage(): Boolean {
         return reservation.orderedMenus.all { it.menuType == MenuType.BEVERAGE }
+    }
+
+    companion object{
+        private const val EVENT_MINIMUM_AMOUNT = 10000
     }
 }
