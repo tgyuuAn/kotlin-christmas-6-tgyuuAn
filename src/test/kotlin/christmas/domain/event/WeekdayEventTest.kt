@@ -41,7 +41,7 @@ class WeekdayEventTest {
     @Test
     fun `총 예약 금액이 10000원 이하일 경우 예약이 불가능하다`() {
         //given
-        val reservation = Reservation(listOf(MUSHROOM_SOUP), 2)
+        val reservation = Reservation(listOf(MUSHROOM_SOUP), 3)
         val weekdayEvent = WeekdayEvent(reservation)
 
         //when
