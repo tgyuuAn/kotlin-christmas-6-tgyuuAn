@@ -1,5 +1,8 @@
 package christmas.domain.event
 
-interface woowaEvent {
-    fun applyDiscount() : Long
+import java.awt.Menu
+
+abstract class woowaEvent {
+    abstract fun calculateDiscountAmount(): Long
+    abstract fun isEligibleDayForEvent(reservationDate: Int, orderedMenu: List<Menu>): Boolean)
 }
