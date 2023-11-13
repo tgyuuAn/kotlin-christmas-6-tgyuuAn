@@ -21,6 +21,6 @@ class WeekdayEvent(private val reservation: Reservation) : WoowaEvent(reservatio
     }
 
     companion object {
-        private const val DISCOUNT_PER_BEVERAGE = 2023
+        const val DISCOUNT_PER_BEVERAGE = 2023
     }
 }
