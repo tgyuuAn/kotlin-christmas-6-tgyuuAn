@@ -1,5 +1,7 @@
 package christmas.domain
 
+import christmas.domain.menu.MenuItem
+
 data class Reservation(
     val orderedMenus: List<MenuItem>,
     val visitDate: Int,

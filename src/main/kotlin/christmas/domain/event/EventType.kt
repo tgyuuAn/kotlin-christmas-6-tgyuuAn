@@ -1,4 +1,4 @@
-package christmas.domain
+package christmas.domain.event
 
 enum class EventType {
     CHRISTMAS_D_DAY, WEEK_DAY, WEEKEND, STARRED_DAY, FREEBIE

@@ -1,7 +1,6 @@
 package christmas.domain.event
 
-import christmas.domain.EventType
-import christmas.domain.MenuType.*
+import christmas.domain.menu.MenuType.*
 import christmas.domain.Reservation
 import christmas.uitl.Calendar.FRIDAY
 import christmas.uitl.Calendar.SATURDAY
