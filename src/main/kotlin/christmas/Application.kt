@@ -1,5 +1,10 @@
 package christmas
 
+import christmas.domain.Benefit
+import christmas.domain.event.EventType
+
 fun main() {
-    TODO("프로그램 구현")
+    val benefit = Benefit()
+    benefit.accumulateBenefit(EventType.CHRISTMAS_D_DAY,2500)
+    print(benefit.toString())
 }
