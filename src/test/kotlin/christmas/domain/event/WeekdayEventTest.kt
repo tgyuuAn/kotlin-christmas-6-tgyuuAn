@@ -80,7 +80,7 @@ class WeekdayEventTest {
     }
 
     @Test
-    fun `디저트 메뉴가 예약 메뉴에 있을 경우 하나 당 2023원이 할인된다`() {
+    fun `디저트 메뉴가 예약 메뉴에 있을 한 개 있을경우 2023원이 할인된다`() {
         //given
         val reservation = Reservation(listOf(CHOCOLATE_CAKE), 1)
         val weekdayEvent = WeekdayEvent(reservation = reservation)
@@ -90,6 +90,20 @@ class WeekdayEventTest {
 
         //then
         val expected = DISCOUNT_PER_BEVERAGE
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `디저트 메뉴가 예약 메뉴에 있을 경우 하나 당 2023원이 할인된다`() {
+        //given
+        val reservation = Reservation(listOf(CHOCOLATE_CAKE, CHOCOLATE_CAKE), 1)
+        val weekdayEvent = WeekdayEvent(reservation = reservation)
+
+        //when
+        val actual = weekdayEvent.calculateDiscountAmount()
+
+        //then
+        val expected = DISCOUNT_PER_BEVERAGE * 2
         assertThat(actual).isEqualTo(expected)
     }
 }
