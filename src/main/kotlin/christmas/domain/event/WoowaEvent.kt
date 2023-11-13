@@ -1,6 +1,6 @@
 package christmas.domain.event
 
-import christmas.domain.MenuType
+import christmas.domain.MenuType.*
 import christmas.domain.Reservation
 
 abstract class WoowaEvent(private val reservation: Reservation) {
@@ -27,7 +27,7 @@ abstract class WoowaEvent(private val reservation: Reservation) {
     }
 
     private fun isAllMenusAreBeverage(): Boolean {
-        return reservation.orderedMenus.all { it.menuType == MenuType.BEVERAGE }
+        return reservation.orderedMenus.all { it.menuType == BEVERAGE }
     }
 
     companion object{

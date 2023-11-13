@@ -1,6 +1,7 @@
 package christmas.domain.event
 
 import christmas.domain.MenuItem
+import christmas.domain.MenuItem.*
 import christmas.domain.Reservation
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
@@ -14,7 +15,7 @@ class WeekendEventTest {
     fun `주말 이벤트는 평일에 할인 혜택을 받을 수 없다`(reservationDate: Int) {
         //given
         val reservation =
-            Reservation(listOf(MenuItem.MUSHROOM_SOUP, MenuItem.MUSHROOM_SOUP), reservationDate)
+            Reservation(listOf(MUSHROOM_SOUP, MUSHROOM_SOUP), reservationDate)
         val weekendEvent = WeekendEvent(reservation = reservation)
 
         //when
@@ -27,7 +28,7 @@ class WeekendEventTest {
     @Test
     fun `예약 메뉴가 음료로만 되어 있을 경우 할인 혜택을 받을 수 없다`() {
         //given
-        val reservation = Reservation(listOf(MenuItem.CHAMPAGNE), 2)
+        val reservation = Reservation(listOf(CHAMPAGNE), 2)
         val weekendEvent = WeekendEvent(reservation = reservation)
 
         //when
@@ -40,7 +41,7 @@ class WeekendEventTest {
     @Test
     fun `총 예약 금액이 10000원 이하일 경우 할인 혜택을 받을 수 없다`() {
         //given
-        val reservation = Reservation(listOf(MenuItem.MUSHROOM_SOUP), 2)
+        val reservation = Reservation(listOf(MUSHROOM_SOUP), 2)
         val weekendEvent = WeekendEvent(reservation)
 
         //when
@@ -55,7 +56,7 @@ class WeekendEventTest {
     fun `주말 이벤트는 주말에 할인 혜택을 받을 수 있다`(reservationDate: Int) {
         //given
         val reservation =
-            Reservation(listOf(MenuItem.MUSHROOM_SOUP, MenuItem.MUSHROOM_SOUP), reservationDate)
+            Reservation(listOf(MUSHROOM_SOUP, MUSHROOM_SOUP), reservationDate)
         val weekendEvent = WeekendEvent(reservation = reservation)
 
         //when
@@ -68,7 +69,7 @@ class WeekendEventTest {
     @Test
     fun `메인 메뉴가 예약 메뉴에 없을 경우 할인 금액은 없다`() {
         //given
-        val reservation = Reservation(listOf(MenuItem.MUSHROOM_SOUP, MenuItem.MUSHROOM_SOUP), 1)
+        val reservation = Reservation(listOf(MUSHROOM_SOUP, MUSHROOM_SOUP), 1)
         val weekendEvent = WeekendEvent(reservation = reservation)
 
         //when
@@ -82,7 +83,7 @@ class WeekendEventTest {
     @Test
     fun `디저트 메뉴가 예약 메뉴에 있을 한 개만 있을 경우 2023원이 할인된다`() {
         //given
-        val reservation = Reservation(listOf(MenuItem.T_BONE_STEAK), 1)
+        val reservation = Reservation(listOf(T_BONE_STEAK), 1)
         val weekendEvent = WeekendEvent(reservation = reservation)
 
         //when
@@ -96,7 +97,7 @@ class WeekendEventTest {
     @Test
     fun `메인 메뉴가 예약 메뉴에 있을 경우 하나 당 2023원이 할인된다`() {
         //given
-        val reservation = Reservation(listOf(MenuItem.T_BONE_STEAK, MenuItem.T_BONE_STEAK), 1)
+        val reservation = Reservation(listOf(T_BONE_STEAK, T_BONE_STEAK), 1)
         val weekendEvent = WeekendEvent(reservation = reservation)
 
         //when

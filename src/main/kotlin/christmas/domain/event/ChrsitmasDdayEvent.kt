@@ -1,6 +1,5 @@
 package christmas.domain.event
 
-
 import christmas.domain.Reservation
 import christmas.uitl.MoneyUnit.HUNDRED_UNIT
 
