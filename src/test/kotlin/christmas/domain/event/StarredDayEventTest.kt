@@ -45,7 +45,7 @@ class StarredDayEventTest {
         val actual = starredDayEvent.isEligibleForEvent()
 
         //then
-        Assertions.assertThat(actual).isFalse()
+        Assertions.assertThat(actual).isTrue()
     }
 
     @ParameterizedTest
