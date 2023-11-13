@@ -1,10 +1,10 @@
 package christmas
 
-import christmas.domain.Benefit
-import christmas.domain.event.EventType
+import christmas.view.InputView
 
 fun main() {
-    val benefit = Benefit()
-    benefit.accumulateBenefit(EventType.CHRISTMAS_D_DAY,2500)
-    print(benefit.toString())
+    InputView().apply{
+        readDate()
+        readOrder()
+    }
 }
