@@ -1,5 +1,6 @@
 package christmas.domain.event
 
+import christmas.domain.EventType.*
 import christmas.domain.MenuItem.*
 import christmas.domain.Reservation
 import org.assertj.core.api.Assertions
@@ -8,11 +9,14 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
 class StarredDayEventTest {
+
+    private val eventType = STARRED_DAY
+
     @Test
     fun `예약 메뉴가 음료로만 되어 있을 경우 혜택을 받을 수 없다`() {
         //given
         val reservation = Reservation(listOf(CHAMPAGNE), 3)
-        val starredDayEvent = StarredDayEvent(reservation = reservation)
+        val starredDayEvent = StarredDayEvent(eventType = eventType, reservation = reservation)
 
         //when
         val actual = starredDayEvent.isEligibleForEvent()
@@ -25,7 +29,7 @@ class StarredDayEventTest {
     fun `총 예약 금액이 10000원 이하일 경우 예약이 불가능하다`() {
         //given
         val reservation = Reservation(listOf(MUSHROOM_SOUP), 3)
-        val starredDayEvent = StarredDayEvent(reservation)
+        val starredDayEvent = StarredDayEvent(eventType = eventType, reservation = reservation)
 
         //when
         val actual = starredDayEvent.isEligibleForEvent()
@@ -39,7 +43,7 @@ class StarredDayEventTest {
     fun `예약 날짜가 별표된 날짜 일 경우 할인 혜택을 받는다`(reservationDate: Int) {
         //given
         val reservation = Reservation(listOf(BARBECUE_RIB), reservationDate)
-        val starredDayEvent = StarredDayEvent(reservation)
+        val starredDayEvent = StarredDayEvent(eventType = eventType, reservation = reservation)
 
         //when
         val actual = starredDayEvent.isEligibleForEvent()
@@ -53,7 +57,7 @@ class StarredDayEventTest {
     fun `예약 날짜가 별표된 날짜가 아닐 경우 할인 혜택을 받지 못한다`(reservationDate: Int) {
         //given
         val reservation = Reservation(listOf(BARBECUE_RIB), reservationDate)
-        val starredDayEvent = StarredDayEvent(reservation)
+        val starredDayEvent = StarredDayEvent(eventType = eventType, reservation = reservation)
 
         //when
         val actual = starredDayEvent.isEligibleForEvent()

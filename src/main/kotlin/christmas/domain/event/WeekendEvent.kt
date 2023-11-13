@@ -1,10 +1,15 @@
 package christmas.domain.event
 
+import christmas.domain.EventType
 import christmas.domain.MenuType.*
 import christmas.domain.Reservation
 import christmas.uitl.Calendar
 
-class WeekendEvent(private val reservation: Reservation) : WoowaEvent(reservation) {
+class WeekendEvent(
+    eventType: EventType,
+    private val reservation: Reservation,
+) : WoowaEvent(eventType, reservation) {
+
     override fun isEligibleDayForEvent(): Boolean {
         val day = (reservation.visitDate % Calendar.WEEK_LENGTH)
         return (day == Calendar.FRIDAY) || (day == Calendar.SATURDAY)
