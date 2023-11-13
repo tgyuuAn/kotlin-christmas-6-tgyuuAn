@@ -1,6 +1,6 @@
 package christmas.domain.event
 
-import christmas.domain.MenuItem
+import christmas.domain.EventType.*
 import christmas.domain.MenuItem.*
 import christmas.domain.Reservation
 import christmas.uitl.MoneyUnit.HUNDRED_UNIT
@@ -12,13 +12,16 @@ import org.junit.jupiter.params.provider.ValueSource
 
 class ChristmasDdayEventTest {
 
+    private val eventType = CHRISTMAS_D_DAY
+
     @ParameterizedTest
     @ValueSource(ints = [26, 27, 28, 29, 30, 31])
     fun `예약 날짜가 26일 이상일 경우 할인 혜택을 받을 수 없다`(reservationDate: Int) {
         //given
         val reservation =
             Reservation(listOf(MUSHROOM_SOUP, MUSHROOM_SOUP), reservationDate)
-        val christmasDdayEvent = ChristmasDdayEvent(reservation)
+        val christmasDdayEvent =
+            ChristmasDdayEvent(eventType = eventType, reservation = reservation)
 
         //when
 
@@ -33,7 +36,8 @@ class ChristmasDdayEventTest {
         //given
         val reservation =
             Reservation(listOf(MUSHROOM_SOUP, MUSHROOM_SOUP), reservationDate)
-        val christmasDdayEvent = ChristmasDdayEvent(reservation)
+        val christmasDdayEvent =
+            ChristmasDdayEvent(eventType = eventType, reservation = reservation)
 
         //when
 
@@ -47,7 +51,8 @@ class ChristmasDdayEventTest {
         //given
         val reservation =
             Reservation(listOf(MUSHROOM_SOUP), 3)
-        val christmasDdayEvent = ChristmasDdayEvent(reservation)
+        val christmasDdayEvent =
+            ChristmasDdayEvent(eventType = eventType, reservation = reservation)
 
         //when
         val actual = christmasDdayEvent.isEligibleForEvent()
@@ -60,7 +65,8 @@ class ChristmasDdayEventTest {
     fun `예약 메뉴가 음료로만 되어 있을 경우 할인 혜택을 받을 수 없다`() {
         //given
         val reservation = Reservation(listOf(CHAMPAGNE), 3)
-        val christmasDdayEvent = ChristmasDdayEvent(reservation = reservation)
+        val christmasDdayEvent =
+            ChristmasDdayEvent(eventType = eventType, reservation = reservation)
 
         //when
         val actual = christmasDdayEvent.isEligibleForEvent()
@@ -75,7 +81,8 @@ class ChristmasDdayEventTest {
         //given
         val reservation =
             Reservation(listOf(MUSHROOM_SOUP, MUSHROOM_SOUP), 3)
-        val christmasDdayEvent = ChristmasDdayEvent(reservation)
+        val christmasDdayEvent =
+            ChristmasDdayEvent(eventType = eventType, reservation = reservation)
 
         //when
         val actual = christmasDdayEvent.isEligibleForEvent()
@@ -90,7 +97,8 @@ class ChristmasDdayEventTest {
         //given
         val reservation =
             Reservation(listOf(MUSHROOM_SOUP, MUSHROOM_SOUP), reservationDate)
-        val christmasDdayEvent = ChristmasDdayEvent(reservation)
+        val christmasDdayEvent =
+            ChristmasDdayEvent(eventType = eventType, reservation = reservation)
 
         //when
         val actual = christmasDdayEvent.calculateDiscountAmount()
