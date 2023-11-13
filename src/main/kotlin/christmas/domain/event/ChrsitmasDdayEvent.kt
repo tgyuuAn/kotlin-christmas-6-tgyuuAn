@@ -2,7 +2,6 @@ package christmas.domain.event
 
 
 import christmas.domain.Reservation
-import java.lang.Integer.min
 
 class ChristmasDdayEvent(
     private val reservation: Reservation
@@ -13,9 +12,7 @@ class ChristmasDdayEvent(
     }
 
     override fun calculateDiscountAmount(): Int {
-        val totalAmount = getTotalAmount(reservation.menuItems)
-
-        return min(totalAmount, 1000 + (reservation.visitDate - EVENT_START_DAY) * 100)
+        return 1000 + (reservation.visitDate - EVENT_START_DAY) * 100
     }
 
     companion object {
