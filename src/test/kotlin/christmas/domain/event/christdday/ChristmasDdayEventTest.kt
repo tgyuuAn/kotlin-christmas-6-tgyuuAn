@@ -3,6 +3,8 @@ package christmas.domain.event.christdday
 import christmas.domain.MenuItem
 import christmas.domain.Reservation
 import christmas.domain.event.ChristmasDdayEvent
+import christmas.uitl.MoneyUnit.HUNDRED_UNIT
+import christmas.uitl.MoneyUnit.THOUSAND_UNIT
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -80,7 +82,7 @@ class ChristmasDdayEventTest {
         val actual = christmasDdayEvent.calculateDiscountAmount()
 
         //then
-        val expected = 1000 + (reservationDate - 1) * 100
+        val expected = THOUSAND_UNIT + (reservationDate - 1) * HUNDRED_UNIT
         assertThat(actual).isEqualTo(expected)
     }
 }

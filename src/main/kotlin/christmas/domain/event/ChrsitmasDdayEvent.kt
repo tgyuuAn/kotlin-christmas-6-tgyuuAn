@@ -2,6 +2,7 @@ package christmas.domain.event
 
 
 import christmas.domain.Reservation
+import christmas.uitl.MoneyUnit.HUNDRED_UNIT
 
 class ChristmasDdayEvent(
     private val reservation: Reservation
@@ -12,7 +13,7 @@ class ChristmasDdayEvent(
     }
 
     override fun calculateDiscountAmount(): Int {
-        return 1000 + (reservation.visitDate - EVENT_START_DAY) * 100
+        return 1000 + (reservation.visitDate - EVENT_START_DAY) * HUNDRED_UNIT
     }
 
     companion object {
