@@ -12,4 +12,8 @@ class FreebieEvent(
     override fun isEligibleDayForEvent(): Boolean = true
 
     override fun calculateDiscountAmount(): Int = CHAMPAGNE.price
+
+    companion object{
+        const val MINIMUM_AMOUNT_FOR_FREEBIE = 120000
+    }
 }
