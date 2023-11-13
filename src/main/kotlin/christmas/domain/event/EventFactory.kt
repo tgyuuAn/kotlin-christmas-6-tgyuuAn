@@ -10,5 +10,6 @@ object EventFactory {
         WEEK_DAY -> WeekdayEvent(reservation = reservation)
         WEEKEND -> WeekendEvent(reservation = reservation)
         STARRED_DAY -> StarredDayEvent(reservation = reservation)
+        FREEBIE -> FreebieEvent(reservation = reservation)
     }
 }
