@@ -5,8 +5,8 @@ import christmas.domain.MenuItem.*
 import christmas.domain.Reservation
 
 class FreebieEvent(
-    private val eventType: EventType,
-    private val reservation: Reservation,
+    eventType: EventType,
+    reservation: Reservation,
 ) : WoowaEvent(eventType, reservation) {
 
     override fun isEligibleDayForEvent(): Boolean = true

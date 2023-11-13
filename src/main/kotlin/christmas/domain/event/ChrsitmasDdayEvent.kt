@@ -5,7 +5,7 @@ import christmas.domain.Reservation
 import christmas.uitl.MoneyUnit.HUNDRED_UNIT
 
 class ChristmasDdayEvent(
-    private val eventType: EventType,
+    eventType: EventType,
     private val reservation: Reservation,
 ) : WoowaEvent(eventType, reservation) {
 

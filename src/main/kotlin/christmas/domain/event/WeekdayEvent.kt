@@ -8,7 +8,7 @@ import christmas.uitl.Calendar.SATURDAY
 import christmas.uitl.Calendar.WEEK_LENGTH
 
 class WeekdayEvent(
-    private val eventType: EventType,
+    eventType: EventType,
     private val reservation: Reservation,
 ) : WoowaEvent(eventType, reservation) {
 

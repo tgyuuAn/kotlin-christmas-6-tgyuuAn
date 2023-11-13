@@ -5,7 +5,7 @@ import christmas.domain.Reservation
 import christmas.uitl.Calendar.STARRED_DAY
 
 class StarredDayEvent(
-    private val eventType: EventType,
+    eventType: EventType,
     private val reservation: Reservation,
 ) : WoowaEvent(eventType, reservation) {
 
