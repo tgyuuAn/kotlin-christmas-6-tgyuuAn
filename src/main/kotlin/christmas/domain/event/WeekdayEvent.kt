@@ -1,5 +1,6 @@
 package christmas.domain.event
 
+import christmas.domain.MenuType
 import christmas.domain.Reservation
 import christmas.uitl.Calendar.FRIDAY
 import christmas.uitl.Calendar.SATURDAY
@@ -13,6 +14,13 @@ class WeekdayEvent(private val reservation: Reservation) : WoowaEvent(reservatio
     }
 
     override fun calculateDiscountAmount(): Int {
-        return reservation.getTotalAmount()
+        val totalDessertCount = reservation.orderedMenus.count { menuItem ->
+            menuItem.menuType == MenuType.DESSERT
+        }
+        return totalDessertCount * DISCOUNT_PER_BEVERAGE
+    }
+
+    companion object {
+        const val DISCOUNT_PER_BEVERAGE = 2023
     }
 }
