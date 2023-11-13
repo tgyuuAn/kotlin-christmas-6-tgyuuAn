@@ -4,6 +4,7 @@ import christmas.domain.MenuItem
 import christmas.domain.Reservation
 import christmas.domain.event.ChristmasDdayEvent
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
@@ -36,6 +37,34 @@ class ChristmasDdayEventTest {
 
         //then
         val actual = christmasDdayEvent.isEligibleForEvent()
+        assertThat(actual).isTrue()
+    }
+
+    @Test
+    fun `총 음식 예약 금액이 10000원 이하일 경우 할인 혜택을 받지 못한다`() {
+        //given
+        val reservation =
+            Reservation(listOf(MenuItem.MUSHROOM_SOUP), 3)
+        val christmasDdayEvent = ChristmasDdayEvent(reservation)
+
+        //when
+        val actual = christmasDdayEvent.isEligibleForEvent()
+
+        //then
+        assertThat(actual).isFalse()
+    }
+
+    @Test
+    fun `총 음식 예약 금액이 10000원 이상이고, 25일 이하면 할인 혜택을 받을 수 있다`() {
+        //given
+        val reservation =
+            Reservation(listOf(MenuItem.MUSHROOM_SOUP,MenuItem.MUSHROOM_SOUP), 3)
+        val christmasDdayEvent = ChristmasDdayEvent(reservation)
+
+        //when
+        val actual = christmasDdayEvent.isEligibleForEvent()
+
+        //then
         assertThat(actual).isTrue()
     }
 
