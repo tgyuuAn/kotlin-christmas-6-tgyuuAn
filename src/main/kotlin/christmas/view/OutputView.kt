@@ -1,11 +1,17 @@
 package christmas.view
 
+import christmas.domain.Reservation
 import christmas.domain.menu.MenuItem
 
 object OutputView {
-    fun printMenus(orderedMenus: List<Pair<MenuItem, Int>>) {
+    fun printWelcomeMessage(reservation: Reservation) {
+        println("12월 ${reservation.visitDate}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!")
+        println()
+    }
+
+    fun printMenus(reservation: Reservation) {
         println("<주문 메뉴>")
-        orderedMenus.forEach { orderedMenu ->
+        reservation.orderedMenus.forEach { orderedMenu ->
             printMenu(orderedMenu)
         }
     }
@@ -16,5 +22,8 @@ object OutputView {
         println("${menuName} ${orderedCount}개")
     }
 
-    fun printTotalAmount()
+    fun printTotalAmount(orderedMenus: Reservation) {
+        println("<할인 전 총주문 금액>")
+        println(orderedMenus.getTotalAmount())
+    }
 }
