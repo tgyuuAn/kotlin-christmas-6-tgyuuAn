@@ -9,8 +9,11 @@ import christmas.domain.event.FreebieEvent
 import christmas.validator.InputValidator.validateInputIsInt
 import christmas.util.OrderParser.parseOrders
 import christmas.view.InputView
+import christmas.view.OutputView.printFreebie
 import christmas.view.OutputView.printMenus
 import christmas.view.OutputView.printTotalAmount
+import christmas.view.OutputView.printTotalBenefit
+import christmas.view.OutputView.printTotalBenefitDetail
 import christmas.view.OutputView.printWelcomeMessage
 
 class Controller {
@@ -18,10 +21,15 @@ class Controller {
         val reservationDate = getReservationDate()
         val reservationOrders = getReservationOrders()
         val reservation = Reservation(reservationOrders, reservationDate)
+
         printWelcomeMessage(reservation)
         printMenus(reservation)
         printTotalAmount(reservation)
+
         val calculatedBenefit = caculateTotalBenefits(reservation)
+        printFreebie(calculatedBenefit)
+        printTotalBenefitDetail(calculatedBenefit)
+        printTotalBenefit(calculatedBenefit)
     }
 
     private fun caculateTotalBenefits(reservation: Reservation): Benefit {
