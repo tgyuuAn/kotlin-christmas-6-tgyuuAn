@@ -1,5 +1,6 @@
 package christmas.controller
 
+import christmas.domain.OrderMenu
 import christmas.domain.Reservation
 import christmas.domain.menu.MenuItem
 import christmas.validator.InputValidator.validateInputIsInt
@@ -36,8 +37,8 @@ class Controller {
         return reservationDate
     }
 
-    private fun getReservationOrders(): List<Pair<MenuItem, Int>> {
-        var ordersPair: List<Pair<MenuItem, Int>>? = null
+    private fun getReservationOrders(): List<OrderMenu> {
+        var ordersPair: List<OrderMenu>? = null
 
         while (ordersPair == null) {
             val input = InputView.readOrder()

@@ -1,5 +1,6 @@
 package christmas.view
 
+import christmas.domain.OrderMenu
 import christmas.domain.Reservation
 import christmas.domain.menu.MenuItem
 
@@ -16,9 +17,9 @@ object OutputView {
         }
     }
 
-    private fun printMenu(orderedMenu: Pair<MenuItem, Int>) {
-        val menuName = orderedMenu.first.displayName
-        val orderedCount = orderedMenu.second
+    private fun printMenu(orderedMenu: OrderMenu) {
+        val menuName = orderedMenu.menuItem.displayName
+        val orderedCount = orderedMenu.orderedCount
         println("${menuName} ${orderedCount}개")
     }
 
