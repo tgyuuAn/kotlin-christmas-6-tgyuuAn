@@ -15,4 +15,6 @@ object OutputView {
         val orderedCount = orderedMenu.second
         println("${menuName} ${orderedCount}개")
     }
+
+    fun printTotalAmount()
 }
