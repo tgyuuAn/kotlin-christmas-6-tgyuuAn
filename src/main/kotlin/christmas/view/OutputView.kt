@@ -3,10 +3,9 @@ package christmas.view
 import christmas.domain.Benefit
 import christmas.domain.menu.OrderMenu
 import christmas.domain.Reservation
-import christmas.domain.event.EventType
 import christmas.domain.event.EventType.*
-import christmas.domain.menu.MenuItem
 import christmas.domain.menu.MenuItem.CHAMPAGNE
+import christmas.util.StringFormatter.decimalFormat
 
 object OutputView {
     fun printWelcomeMessage(reservation: Reservation) {
@@ -19,6 +18,7 @@ object OutputView {
         reservation.orderedMenus.forEach { orderedMenu ->
             printMenu(orderedMenu)
         }
+        println()
     }
 
     private fun printMenu(orderedMenu: OrderMenu) {
@@ -29,29 +29,33 @@ object OutputView {
 
     fun printTotalAmount(orderedMenus: Reservation) {
         println("<할인 전 총주문 금액>")
-        println(orderedMenus.getTotalAmount())
+        println("-"+decimalFormat.format(orderedMenus.getTotalAmount())+"원")
+        println()
     }
 
-    fun printFreebie(benefit : Benefit){
+    fun printFreebie(benefit: Benefit) {
         println("<증정 메뉴>")
-        if(benefit.discountedAmount.getValue(FREEBIE) == CHAMPAGNE.price){
+        if (benefit.discountedAmount.getValue(FREEBIE) == CHAMPAGNE.price) {
             println("${CHAMPAGNE.displayName} 1개")
+            println()
             return
         }
         println("없음")
+        println()
     }
 
-    fun printTotalBenefitDetail(benefit : Benefit){
+    fun printTotalBenefitDetail(benefit: Benefit) {
         println("<혜택 내역>")
-        if(benefit.toString() ==""){
+        if (benefit.toString() == "") {
             println("없음")
             return
         }
         println(benefit.toString())
     }
 
-    private fun printTotalBenefit(benefit : Benefit){
+    fun printTotalBenefit(benefit: Benefit) {
         println("<총혜택 금액>")
-        println(benefit.getTotalDiscountedAmount())
+        println("-"+decimalFormat.format(benefit.getTotalDiscountedAmount())+"원")
+        println()
     }
 }

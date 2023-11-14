@@ -8,6 +8,7 @@ import christmas.domain.event.EventType
 import christmas.domain.event.FreebieEvent
 import christmas.validator.InputValidator.validateInputIsInt
 import christmas.util.OrderParser.parseOrders
+import christmas.util.StringFormatter
 import christmas.view.InputView
 import christmas.view.OutputView.printFreebie
 import christmas.view.OutputView.printMenus
@@ -30,6 +31,8 @@ class Controller {
         printFreebie(calculatedBenefit)
         printTotalBenefitDetail(calculatedBenefit)
         printTotalBenefit(calculatedBenefit)
+        println("<할인 후 예상 결제 금액>")
+        println(StringFormatter.decimalFormat.format(reservation.getTotalAmount() - calculatedBenefit.getTotalDiscountedAmount()) + "원")
     }
 
     private fun caculateTotalBenefits(reservation: Reservation): Benefit {

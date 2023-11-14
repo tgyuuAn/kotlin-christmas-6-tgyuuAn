@@ -18,7 +18,7 @@ class WeekdayEvent(
 
     override fun calculateDiscountAmount(): Int {
         val totalDessertCount = reservation.orderedMenus.count { menuItem ->
-            menuItem.menuType == DESSERT
+            menuItem.menuItem.menuType == DESSERT
         }
         return totalDessertCount * DISCOUNT_PER_BEVERAGE
     }

@@ -4,7 +4,7 @@ import christmas.domain.Benefit
 import christmas.domain.badge.BadgeType.*
 
 class BadgeEvent(private val benefit: Benefit) {
-    fun getBadge(): BadgeType = when (benefit.totalDiscountedAmount) {
+    fun getBadge(): BadgeType = when (benefit.getTotalDiscountedAmount()) {
         in STAR.minimumDiscountedAmount..<TREE.minimumDiscountedAmount -> STAR
         in TREE.minimumDiscountedAmount..<SANTA.minimumDiscountedAmount -> TREE
         in SANTA.minimumDiscountedAmount..Int.MAX_VALUE -> SANTA

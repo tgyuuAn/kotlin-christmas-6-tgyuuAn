@@ -15,7 +15,7 @@ class BenefitTest {
         benefit.accumulateBenefit(EventType.WEEK_DAY, 2023)
 
         //then
-        val actual = benefit.totalDiscountedAmount
+        val actual = benefit.getTotalDiscountedAmount()
         val expected = 2500 + 2023
         assertThat(actual).isEqualTo(expected)
     }

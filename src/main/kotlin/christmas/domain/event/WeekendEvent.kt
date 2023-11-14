@@ -16,7 +16,7 @@ class WeekendEvent(
 
     override fun calculateDiscountAmount(): Int {
         val totalDessertCount = reservation.orderedMenus.count { menuItem ->
-            menuItem.menuType == MAIN
+            menuItem.menuItem.menuType == MAIN
         }
         return totalDessertCount * DISCOUNT_PER_MAIN
     }
