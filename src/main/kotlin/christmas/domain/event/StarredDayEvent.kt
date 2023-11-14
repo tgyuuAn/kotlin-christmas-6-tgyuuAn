@@ -1,7 +1,7 @@
 package christmas.domain.event
 
 import christmas.domain.Reservation
-import christmas.uitl.Calendar.STARRED_DAY
+import christmas.util.Calendar.STARRED_DAY
 
 class StarredDayEvent(
     eventType: EventType,

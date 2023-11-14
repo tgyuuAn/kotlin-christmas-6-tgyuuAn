@@ -15,13 +15,13 @@ enum class MenuItem(val displayName: String, val menuType: MenuType, val price: 
 
     ZERO_COLA("제로콜라", MenuType.BEVERAGE, 3000),
     RED_WINE("레드와인", MenuType.BEVERAGE, 60000),
-    CHAMPAGNE("샴페인", MenuType.BEVERAGE, 25000)
+    CHAMPAGNE("샴페인", MenuType.BEVERAGE, 25000);
 
     companion object {
         fun convertStringToMenuItemOrNull(input: String): MenuItem? {
-            MenuItem.values().forEach {
-                if (it.displayName == input) {
-                    return it
+            MenuItem.values().forEach { menuItem ->
+                if (menuItem.displayName == input) {
+                    return menuItem
                 }
             }
             return null

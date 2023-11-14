@@ -1,4 +1,4 @@
-package christmas.uitl
+package christmas.util
 
 object MoneyUtil {
     const val THOUSAND_UNIT = 1000

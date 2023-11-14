@@ -1,4 +1,4 @@
-package christmas.uitl
+package christmas.util
 
 object Calendar {
     const val WEEK_LENGTH = 7

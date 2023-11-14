@@ -1,7 +1,7 @@
 package christmas.domain
 
 import christmas.domain.event.EventType
-import christmas.uitl.StringFormatter.decimalFormat
+import christmas.util.StringFormatter.decimalFormat
 
 class Benefit {
     private var eventType: EventType? = null

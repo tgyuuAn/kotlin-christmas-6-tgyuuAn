@@ -1,6 +1,7 @@
-package christmas.domain.validator
+package christmas.validator
 
 import christmas.domain.menu.MenuItem
+import christmas.domain.menu.MenuItem.Companion.convertStringToMenuItemOrNull
 
 object InputValidator {
     fun validateInputIsInt(input: String, message: String): Result<Int> =
@@ -9,7 +10,7 @@ object InputValidator {
         } ?: Result.failure(IllegalArgumentException("[ERROR]" + message + " 다시 입력해 주세요."))
 
     fun validateInputIsMenuItem(input: String, message: String): Result<MenuItem> =
-        convertStringToMenuItemOrNull()?.let {
+        convertStringToMenuItemOrNull(input)?.let {
             Result.success(it)
         } ?: Result.failure(IllegalArgumentException("[ERROR]" + message + " 다시 입력해 주세요."))
 }

@@ -3,8 +3,8 @@ package christmas.domain.event
 import christmas.domain.event.EventType.*
 import christmas.domain.menu.MenuItem.*
 import christmas.domain.Reservation
-import christmas.uitl.MoneyUnit.HUNDRED_UNIT
-import christmas.uitl.MoneyUnit.THOUSAND_UNIT
+import christmas.util.MoneyUnit.HUNDRED_UNIT
+import christmas.util.MoneyUnit.THOUSAND_UNIT
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest

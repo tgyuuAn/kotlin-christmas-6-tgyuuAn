@@ -2,9 +2,9 @@ package christmas.domain.event
 
 import christmas.domain.menu.MenuType.*
 import christmas.domain.Reservation
-import christmas.uitl.Calendar.FRIDAY
-import christmas.uitl.Calendar.SATURDAY
-import christmas.uitl.Calendar.WEEK_LENGTH
+import christmas.util.Calendar.FRIDAY
+import christmas.util.Calendar.SATURDAY
+import christmas.util.Calendar.WEEK_LENGTH
 
 class WeekdayEvent(
     eventType: EventType,
