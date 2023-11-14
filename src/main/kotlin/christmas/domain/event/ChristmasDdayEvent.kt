@@ -1,7 +1,7 @@
 package christmas.domain.event
 
 import christmas.domain.Reservation
-import christmas.util.MoneyUnit.HUNDRED_UNIT
+import christmas.util.MoneyUtil.HUNDRED_UNIT
 
 class ChristmasDdayEvent(
     eventType: EventType,
