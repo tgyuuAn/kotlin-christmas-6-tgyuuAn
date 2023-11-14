@@ -4,12 +4,16 @@ import christmas.domain.menu.MenuItem
 import christmas.validator.InputValidator.validateInputIsInt
 import christmas.util.OrderParser.parseOrders
 import christmas.view.InputView
+import christmas.view.OutputView
+import christmas.view.OutputView.printMenus
 
 class Controller {
     fun run() {
         val reservationDate = getReservationDate()
         val reservationOrders = getReservationOrders()
         println("12월 ${reservationDate}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!")
+        println()
+        printMenus(reservationOrders)
         println()
     }
 
