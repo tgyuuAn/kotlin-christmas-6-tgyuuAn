@@ -1,8 +1,7 @@
 package christmas.view
 
-import christmas.domain.OrderMenu
+import christmas.domain.menu.OrderMenu
 import christmas.domain.Reservation
-import christmas.domain.menu.MenuItem
 
 object OutputView {
     fun printWelcomeMessage(reservation: Reservation) {

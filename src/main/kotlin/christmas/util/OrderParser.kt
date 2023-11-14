@@ -1,6 +1,6 @@
 package christmas.util
 
-import christmas.domain.OrderMenu
+import christmas.domain.menu.OrderMenu
 import christmas.domain.menu.MenuItem
 import christmas.validator.InputValidator.validateInputIsInt
 import christmas.validator.InputValidator.validateInputIsMenuItem

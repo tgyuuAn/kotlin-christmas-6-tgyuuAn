@@ -1,6 +1,4 @@
-package christmas.domain
-
-import christmas.domain.menu.MenuItem
+package christmas.domain.menu
 
 data class OrderMenu(
     val menuItem : MenuItem,

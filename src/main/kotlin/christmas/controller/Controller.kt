@@ -1,12 +1,10 @@
 package christmas.controller
 
-import christmas.domain.OrderMenu
+import christmas.domain.menu.OrderMenu
 import christmas.domain.Reservation
-import christmas.domain.menu.MenuItem
 import christmas.validator.InputValidator.validateInputIsInt
 import christmas.util.OrderParser.parseOrders
 import christmas.view.InputView
-import christmas.view.OutputView
 import christmas.view.OutputView.printMenus
 import christmas.view.OutputView.printTotalAmount
 import christmas.view.OutputView.printWelcomeMessage
