@@ -1,10 +1,7 @@
 package christmas
 
-import christmas.domain.Benefit
-import christmas.domain.event.EventType
+import christmas.controller.Controller
 
 fun main() {
-    val benefit = Benefit()
-    benefit.accumulateBenefit(EventType.CHRISTMAS_D_DAY,2500)
-    print(benefit.toString())
+    Controller().run()
 }

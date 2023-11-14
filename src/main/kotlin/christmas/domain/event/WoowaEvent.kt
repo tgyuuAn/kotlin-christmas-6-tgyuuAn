@@ -16,7 +16,7 @@ abstract class WoowaEvent(
         if (!isTotalAmountEligible()) {
             return false
         }
-        if (isAllMenusAreBeverage()) {
+        if (reservation.isAllMenusAreBeverage()) {
             return false
         }
         if (!isEligibleDayForEvent()) {
@@ -31,9 +31,6 @@ abstract class WoowaEvent(
         }
         return reservation.getTotalAmount() >= EVENT_MINIMUM_AMOUNT
     }
-
-    private fun isAllMenusAreBeverage(): Boolean =
-        reservation.orderedMenus.all { it.menuType == BEVERAGE }
 
     companion object {
         private const val EVENT_MINIMUM_AMOUNT = 10000
