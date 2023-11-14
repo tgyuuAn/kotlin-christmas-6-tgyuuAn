@@ -12,18 +12,32 @@ class Controller {
     }
 
     private fun getReservationDate(): Int {
-        val input = InputView.readDate()
-        try {
-            validateInputIsInt(input, "유효하지 않은 날짜입니다.")
-        } catch (e: IllegalArgumentException) {
-            getReservationDate()
+        var reservationDate: Int? = null
+
+        while (reservationDate == null) {
+            val input = InputView.readDate()
+            try {
+                reservationDate = validateInputIsInt(input, "유효하지 않은 날짜입니다.")
+                    .onFailure { throw it }
+                    .getOrNull()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
         }
-        return input.toInt()
+        return reservationDate
     }
 
     private fun getReservationOrders(): List<Pair<MenuItem, Int>> {
-        val input = InputView.readOrder()
-        val ordersPair: List<Pair<MenuItem, Int>> = parseOrders(input)
+        var ordersPair: List<Pair<MenuItem, Int>>? = null
+
+        while (ordersPair == null) {
+            val input = InputView.readOrder()
+            try {
+                ordersPair = parseOrders(input)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
         return ordersPair
     }
 }
