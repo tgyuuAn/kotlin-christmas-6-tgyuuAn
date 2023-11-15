@@ -57,11 +57,7 @@ class OutputView {
 
     private fun printTotalBenefitDetail(benefit: Benefit) {
         println("<혜택 내역>")
-        if (benefit.discountedAmount.isEmpty()) {
-            println("없음")
-        } else {
-            println(benefit.toString())
-        }
+        println(benefit.toString())
         println()
     }
 
@@ -69,10 +65,9 @@ class OutputView {
         val totalDiscountedAmount = benefit.getTotalDiscountedAmount()
         println("<총혜택 금액>")
         if (totalDiscountedAmount > 0) {
-            println("-" + decimalFormat.format(benefit.getTotalDiscountedAmount()))
-        } else {
-            println(decimalFormat.format(benefit.getTotalDiscountedAmount()))
+            print("-")
         }
+        println(decimalFormat.format(benefit.getTotalDiscountedAmount()))
         println()
     }
 

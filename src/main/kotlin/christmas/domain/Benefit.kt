@@ -38,11 +38,11 @@ class Benefit(private val reservation: Reservation) {
     }
 
     override fun toString(): String {
-        val result = StringBuilder()
         if (_discountedAmount.isEmpty()) {
             return "없음"
         }
 
+        val result = StringBuilder()
         _discountedAmount.forEach { eventType, amount ->
             if (amount != 0) {
                 result.append("${eventType.eventDescription}: -" + decimalFormat.format(amount)+"\n")
