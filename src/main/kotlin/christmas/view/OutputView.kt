@@ -47,7 +47,7 @@ class OutputView {
 
     fun printFreebie(benefit: Benefit) {
         println("<증정 메뉴>")
-        if (benefit.discountedAmount.getValue(FREEBIE) == CHAMPAGNE.price) {
+        if (benefit.discountedAmount[FREEBIE] == CHAMPAGNE.price) {
             println("${CHAMPAGNE.displayName} 1개")
             println()
             return
@@ -58,8 +58,9 @@ class OutputView {
 
     fun printTotalBenefitDetail(benefit: Benefit) {
         println("<혜택 내역>")
-        if (benefit.toString() == "") {
+        if (benefit.discountedAmount.size == 0) {
             println("없음")
+            println()
             return
         }
         println(benefit.toString())
@@ -74,6 +75,7 @@ class OutputView {
     fun printExpectedPaymentAmount(reservation: Reservation, benefit: Benefit) {
         println("<할인 후 예상 결제 금액>")
         println(decimalFormat.format(reservation.getTotalAmount() - benefit.getTotalDiscountedAmount()) + "원")
+        println()
     }
 
     fun printDecemberEventBadge(benefit : Benefit) {
