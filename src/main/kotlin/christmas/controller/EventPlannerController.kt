@@ -8,13 +8,16 @@ import christmas.domain.event.Event
 import christmas.validator.InputValidator.validateInputIsInt
 import christmas.util.OrderParser.parseOrders
 import christmas.view.InputView
-import christmas.view.OutputView.printReservationDetails
+import christmas.view.OutputView
 
-class Controller {
+class EventPlannerController(
+    private val inputView: InputView,
+    private val outputView: OutputView
+) {
     fun run() {
         val reservation = createReservation()
         val calculatedBenefit = calculateTotalBenefits(reservation)
-        printReservationDetails(reservation, calculatedBenefit)
+        outputView.printReservationDetails(reservation, calculatedBenefit)
     }
 
     private fun createReservation(): Reservation {
@@ -39,7 +42,7 @@ class Controller {
         var reservationDate: Int? = null
 
         while (reservationDate == null) {
-            val input = InputView.readDate()
+            val input = inputView.readDate()
             try {
                 reservationDate = validateInputIsInt(input, "유효하지 않은 날짜입니다.")
                     .onFailure { throw it }
@@ -55,7 +58,7 @@ class Controller {
         var ordersPair: List<OrderMenu>? = null
 
         while (ordersPair == null) {
-            val input = InputView.readOrder()
+            val input = inputView.readOrder()
             try {
                 ordersPair = parseOrders(input)
             } catch (e: IllegalArgumentException) {

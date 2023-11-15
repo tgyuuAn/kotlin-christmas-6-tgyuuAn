@@ -8,7 +8,7 @@ import christmas.domain.event.Event.*
 import christmas.domain.menu.MenuItem.CHAMPAGNE
 import christmas.util.StringFormatter.decimalFormat
 
-object OutputView {
+class OutputView {
     fun printReservationDetails(reservation: Reservation, calculatedBenefit: Benefit) {
         printWelcomeMessage(reservation)
         printMenus(reservation)
