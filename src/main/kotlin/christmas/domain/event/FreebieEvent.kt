@@ -2,20 +2,20 @@ package christmas.domain.event
 
 import christmas.domain.menu.MenuItem.*
 import christmas.domain.Reservation
+import christmas.util.Calendar.DECEMBER_END_DAY
+import christmas.util.Calendar.DECEMBER_START_DAY
 
 class FreebieEvent(
-    eventType: EventType,
+    event: Event,
     private val reservation: Reservation,
-) : WoowaEvent(eventType, reservation) {
+) : WoowaEvent(event, reservation) {
 
     override fun isEligibleDayForEvent(): Boolean =
-        reservation.visitDate in EVENT_START_DAY..EVENT_END_DAY
+        reservation.visitDate in DECEMBER_START_DAY..DECEMBER_END_DAY
 
     override fun calculateDiscountAmount(): Int = CHAMPAGNE.price
 
     companion object {
-        private const val EVENT_START_DAY = 1
-        private const val EVENT_END_DAY = 31
         const val MINIMUM_AMOUNT_FOR_FREEBIE = 120000
     }
 }

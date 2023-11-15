@@ -1,6 +1,6 @@
 package christmas.domain.event
 
-enum class EventType(val eventDescription: String) {
+enum class Event(val eventDescription: String) {
     CHRISTMAS_D_DAY("크리스마스 디데이 할인"),
     WEEK_DAY("평일 할인"),
     WEEKEND("주말 할인"),
