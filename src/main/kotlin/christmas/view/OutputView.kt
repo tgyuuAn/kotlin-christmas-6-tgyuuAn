@@ -4,13 +4,15 @@ import christmas.domain.Benefit
 import christmas.domain.menu.OrderMenu
 import christmas.domain.Reservation
 import christmas.domain.Badge.Companion.getBadge
-import christmas.domain.event.Event.*
-import christmas.domain.menu.MenuItem.CHAMPAGNE
 import christmas.util.StringFormatter.decimalFormat
 
 class OutputView {
+    fun printPreviewMessage(){
+        println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.)")
+    }
+
     fun printReservationDetails(reservation: Reservation, calculatedBenefit: Benefit) {
-        printWelcomeMessage(reservation)
+        printPreviewMessage(reservation)
         printMenus(reservation)
         printTotalAmount(reservation)
         printFreebie(calculatedBenefit)
@@ -20,7 +22,7 @@ class OutputView {
         printDecemberEventBadge(calculatedBenefit)
     }
 
-    private fun printWelcomeMessage(reservation: Reservation) {
+    private fun printPreviewMessage(reservation: Reservation) {
         println("12월 ${reservation.visitDate}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!")
         println()
     }
@@ -47,11 +49,10 @@ class OutputView {
 
     private fun printFreebie(benefit: Benefit) {
         println("<증정 메뉴>")
-        if (benefit.discountedAmount[FREEBIE] == CHAMPAGNE.price) {
-            println("${CHAMPAGNE.displayName} 1개")
-        } else {
-            println("없음")
-        }
+        val freebie = benefit.getFreebieOrNull()
+        freebie?.let {
+            println("${it.menuItem} ${it.count}")
+        } ?: println("없음")
         println()
     }
 

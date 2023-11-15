@@ -7,7 +7,6 @@ data class Reservation(
     val orderedMenus: List<OrderMenu>,
     val visitDate: Int,
 ) {
-
     init {
         validateOrderMenusExceeded()
     }

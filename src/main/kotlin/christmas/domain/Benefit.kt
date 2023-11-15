@@ -1,7 +1,10 @@
 package christmas.domain
 
 import christmas.domain.event.Event
+import christmas.domain.event.Event.*
 import christmas.domain.event.EventFactory
+import christmas.domain.event.FreebieEvent.Companion.EVENT_FREEBIE
+import christmas.domain.event.FreebieEvent.Companion.FREEBIE_COUNT
 import christmas.util.StringFormatter.decimalFormat
 
 class Benefit(private val reservation: Reservation) {
@@ -31,6 +34,13 @@ class Benefit(private val reservation: Reservation) {
             totalDiscountedAmount += amount
         }
         return totalDiscountedAmount
+    }
+
+    fun getFreebieOrNull(): Freebie? {
+        if (discountedAmount[FREEBIE] == EVENT_FREEBIE.price * FREEBIE_COUNT) {
+            return Freebie(EVENT_FREEBIE, FREEBIE_COUNT)
+        }
+        return null
     }
 
     override fun toString(): String {

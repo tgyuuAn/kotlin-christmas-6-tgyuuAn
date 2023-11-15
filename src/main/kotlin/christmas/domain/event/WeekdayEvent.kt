@@ -16,15 +16,9 @@ class WeekdayEvent(
         return (day != FRIDAY) && (day != SATURDAY)
     }
 
-    override fun calculateDiscountAmount(): Int {
-        var totalDessertCount = 0
-        reservation.orderedMenus.forEach { menuItem ->
-            if (menuItem.menuItem.menuCategory == DESSERT) {
-                totalDessertCount += menuItem.orderedCount
-            }
-        }
-        return totalDessertCount * DISCOUNT_PER_BEVERAGE
-    }
+    override fun calculateDiscountAmount(): Int = reservation.orderedMenus
+        .filter { it.menuItem.menuCategory == DESSERT }
+        .sumOf { it.orderedCount } * DISCOUNT_PER_BEVERAGE
 
     companion object {
         const val DISCOUNT_PER_BEVERAGE = 2023

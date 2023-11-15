@@ -13,9 +13,11 @@ class FreebieEvent(
     override fun isEligibleDayForEvent(): Boolean =
         reservation.visitDate in DECEMBER_START_DAY..DECEMBER_END_DAY
 
-    override fun calculateDiscountAmount(): Int = CHAMPAGNE.price
+    override fun calculateDiscountAmount(): Int = EVENT_FREEBIE.price * FREEBIE_COUNT
 
     companion object {
+        val EVENT_FREEBIE = CHAMPAGNE
+        val FREEBIE_COUNT = 1
         const val MINIMUM_AMOUNT_FOR_FREEBIE = 120000
     }
 }

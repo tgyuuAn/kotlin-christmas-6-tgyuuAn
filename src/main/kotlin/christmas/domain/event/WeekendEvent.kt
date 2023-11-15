@@ -14,15 +14,9 @@ class WeekendEvent(
         return (day == Calendar.FRIDAY) || (day == Calendar.SATURDAY)
     }
 
-    override fun calculateDiscountAmount(): Int {
-        var totalMainCount = 0
-        reservation.orderedMenus.forEach { menuItem ->
-            if(menuItem.menuItem.menuCategory == MAIN){
-                totalMainCount += menuItem.orderedCount
-            }
-        }
-        return totalMainCount * DISCOUNT_PER_MAIN
-    }
+    override fun calculateDiscountAmount(): Int = reservation.orderedMenus
+        .filter { it.menuItem.menuCategory == MAIN }
+        .sumOf { it.orderedCount } * DISCOUNT_PER_MAIN
 
     companion object {
         const val DISCOUNT_PER_MAIN = 2023
