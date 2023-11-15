@@ -1,14 +1,14 @@
 package christmas.domain.event
 
-import christmas.domain.event.EventType.*
+import christmas.domain.event.Event.*
 import christmas.domain.Reservation
 
 object EventFactory {
-    fun getEvent(eventType: EventType, reservation: Reservation): WoowaEvent = when (eventType) {
-        CHRISTMAS_D_DAY -> ChristmasDdayEvent(eventType = eventType, reservation = reservation)
-        WEEK_DAY -> WeekdayEvent(eventType = eventType, reservation = reservation)
-        WEEKEND -> WeekendEvent(eventType = eventType, reservation = reservation)
-        STARRED_DAY -> StarredDayEvent(eventType = eventType, reservation = reservation)
-        FREEBIE -> FreebieEvent(eventType = eventType, reservation = reservation)
+    fun getEvent(event: Event, reservation: Reservation): WoowaEvent = when (event) {
+        CHRISTMAS_D_DAY -> ChristmasDdayEvent(event = event, reservation = reservation)
+        WEEK_DAY -> WeekdayEvent(event = event, reservation = reservation)
+        WEEKEND -> WeekendEvent(event = event, reservation = reservation)
+        STARRED_DAY -> StarredDayEvent(event = event, reservation = reservation)
+        FREEBIE -> FreebieEvent(event = event, reservation = reservation)
     }
 }

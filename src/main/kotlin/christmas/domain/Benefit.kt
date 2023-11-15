@@ -1,17 +1,17 @@
 package christmas.domain
 
-import christmas.domain.event.EventType
+import christmas.domain.event.Event
 import christmas.util.StringFormatter.decimalFormat
 
 class Benefit {
-    val discountedAmount: HashMap<EventType, Int> = hashMapOf()
+    val discountedAmount: HashMap<Event, Int> = hashMapOf()
 
-    fun accumulateBenefit(eventType: EventType, discountedAmount: Int) {
-        updateTotalDiscountedAmount(eventType, discountedAmount)
+    fun accumulateBenefit(event: Event, discountedAmount: Int) {
+        updateTotalDiscountedAmount(event, discountedAmount)
     }
 
-    private fun updateTotalDiscountedAmount(eventType: EventType, amount: Int) {
-        discountedAmount.put(eventType, amount)
+    private fun updateTotalDiscountedAmount(event: Event, amount: Int) {
+        discountedAmount.put(event, amount)
     }
 
     fun getTotalDiscountedAmount(): Int {

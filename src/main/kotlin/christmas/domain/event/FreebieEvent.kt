@@ -4,9 +4,9 @@ import christmas.domain.menu.MenuItem.*
 import christmas.domain.Reservation
 
 class FreebieEvent(
-    eventType: EventType,
+    event: Event,
     private val reservation: Reservation,
-) : WoowaEvent(eventType, reservation) {
+) : WoowaEvent(event, reservation) {
 
     override fun isEligibleDayForEvent(): Boolean =
         reservation.visitDate in EVENT_START_DAY..EVENT_END_DAY

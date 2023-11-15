@@ -4,9 +4,9 @@ import christmas.domain.Reservation
 import christmas.util.Calendar.STARRED_DAY
 
 class StarredDayEvent(
-    eventType: EventType,
+    event: Event,
     private val reservation: Reservation,
-) : WoowaEvent(eventType, reservation) {
+) : WoowaEvent(event, reservation) {
 
     override fun isEligibleDayForEvent(): Boolean = reservation.visitDate in STARRED_DAY
 

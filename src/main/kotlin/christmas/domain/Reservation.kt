@@ -1,6 +1,6 @@
 package christmas.domain
 
-import christmas.domain.menu.MenuType
+import christmas.domain.menu.MenuCategory
 import christmas.domain.menu.OrderMenu
 
 data class Reservation(
@@ -19,5 +19,5 @@ data class Reservation(
     }
 
     fun isAllMenusAreBeverage(): Boolean =
-        orderedMenus.all { it.menuItem.menuType == MenuType.BEVERAGE }
+        orderedMenus.all { it.menuItem.menuCategory == MenuCategory.BEVERAGE }
 }

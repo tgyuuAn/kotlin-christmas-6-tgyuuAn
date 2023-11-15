@@ -4,9 +4,9 @@ import christmas.domain.Reservation
 import christmas.util.MoneyUtil.HUNDRED_UNIT
 
 class ChristmasDdayEvent(
-    eventType: EventType,
+    event: Event,
     private val reservation: Reservation,
-) : WoowaEvent(eventType, reservation) {
+) : WoowaEvent(event, reservation) {
 
     override fun isEligibleDayForEvent(): Boolean =
         reservation.visitDate in EVENT_START_DAY..EVENT_END_DAY

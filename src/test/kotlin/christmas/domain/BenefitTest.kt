@@ -1,6 +1,6 @@
 package christmas.domain
 
-import christmas.domain.event.EventType
+import christmas.domain.event.Event
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -11,8 +11,8 @@ class BenefitTest {
         val benefit = Benefit()
 
         //when
-        benefit.accumulateBenefit(EventType.CHRISTMAS_D_DAY, 2500)
-        benefit.accumulateBenefit(EventType.WEEK_DAY, 2023)
+        benefit.accumulateBenefit(Event.CHRISTMAS_D_DAY, 2500)
+        benefit.accumulateBenefit(Event.WEEK_DAY, 2023)
 
         //then
         val actual = benefit.getTotalDiscountedAmount()

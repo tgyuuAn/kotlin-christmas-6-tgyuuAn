@@ -1,6 +1,6 @@
 package christmas.domain.event
 
-import christmas.domain.event.EventType.*
+import christmas.domain.event.Event.*
 import christmas.domain.menu.MenuItem.*
 import christmas.domain.Reservation
 import christmas.domain.menu.OrderMenu
@@ -22,7 +22,7 @@ class ChristmasDdayEventTest {
         val reservation =
             Reservation(listOf(OrderMenu(MUSHROOM_SOUP, 2)), reservationDate)
         val christmasDdayEvent =
-            ChristmasDdayEvent(eventType = eventType, reservation = reservation)
+            ChristmasDdayEvent(event = eventType, reservation = reservation)
 
         //when
 
@@ -38,7 +38,7 @@ class ChristmasDdayEventTest {
         val reservation =
             Reservation(listOf(OrderMenu(MUSHROOM_SOUP, 2)), reservationDate)
         val christmasDdayEvent =
-            ChristmasDdayEvent(eventType = eventType, reservation = reservation)
+            ChristmasDdayEvent(event = eventType, reservation = reservation)
 
         //when
 
@@ -53,7 +53,7 @@ class ChristmasDdayEventTest {
         val reservation =
             Reservation(listOf(OrderMenu(MUSHROOM_SOUP, 1)), 3)
         val christmasDdayEvent =
-            ChristmasDdayEvent(eventType = eventType, reservation = reservation)
+            ChristmasDdayEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = christmasDdayEvent.isEligibleForEvent()
@@ -67,7 +67,7 @@ class ChristmasDdayEventTest {
         //given
         val reservation = Reservation(listOf(OrderMenu(CHAMPAGNE, 1)), 3)
         val christmasDdayEvent =
-            ChristmasDdayEvent(eventType = eventType, reservation = reservation)
+            ChristmasDdayEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = christmasDdayEvent.isEligibleForEvent()
@@ -83,7 +83,7 @@ class ChristmasDdayEventTest {
         val reservation =
             Reservation(listOf(OrderMenu(MUSHROOM_SOUP, 2)), 3)
         val christmasDdayEvent =
-            ChristmasDdayEvent(eventType = eventType, reservation = reservation)
+            ChristmasDdayEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = christmasDdayEvent.isEligibleForEvent()
@@ -99,7 +99,7 @@ class ChristmasDdayEventTest {
         val reservation =
             Reservation(listOf(OrderMenu(MUSHROOM_SOUP, 1)), reservationDate)
         val christmasDdayEvent =
-            ChristmasDdayEvent(eventType = eventType, reservation = reservation)
+            ChristmasDdayEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = christmasDdayEvent.calculateDiscountAmount()

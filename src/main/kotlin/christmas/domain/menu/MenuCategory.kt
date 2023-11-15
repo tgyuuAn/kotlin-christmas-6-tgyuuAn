@@ -1,5 +1,5 @@
 package christmas.domain.menu
 
-enum class MenuType {
+enum class MenuCategory {
     APPETIZER, MAIN, DESSERT, BEVERAGE
 }

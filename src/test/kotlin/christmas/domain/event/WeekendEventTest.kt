@@ -1,6 +1,6 @@
 package christmas.domain.event
 
-import christmas.domain.event.EventType.*
+import christmas.domain.event.Event.*
 import christmas.domain.menu.MenuItem.*
 import christmas.domain.Reservation
 import christmas.domain.menu.OrderMenu
@@ -19,7 +19,7 @@ class WeekendEventTest {
         //given
         val reservation =
             Reservation(listOf(OrderMenu(MUSHROOM_SOUP, 2)), reservationDate)
-        val weekendEvent = WeekendEvent(eventType = eventType, reservation = reservation)
+        val weekendEvent = WeekendEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = weekendEvent.isEligibleForEvent()
@@ -32,7 +32,7 @@ class WeekendEventTest {
     fun `예약 메뉴가 음료로만 되어 있을 경우 할인 혜택을 받을 수 없다`() {
         //given
         val reservation = Reservation(listOf(OrderMenu(CHAMPAGNE, 1)), 2)
-        val weekendEvent = WeekendEvent(eventType = eventType, reservation = reservation)
+        val weekendEvent = WeekendEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = weekendEvent.isEligibleForEvent()
@@ -45,7 +45,7 @@ class WeekendEventTest {
     fun `총 예약 금액이 10000원 이하일 경우 할인 혜택을 받을 수 없다`() {
         //given
         val reservation = Reservation(listOf(OrderMenu(MUSHROOM_SOUP, 1)), 2)
-        val weekendEvent = WeekendEvent(eventType = eventType, reservation = reservation)
+        val weekendEvent = WeekendEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = weekendEvent.isEligibleForEvent()
@@ -59,7 +59,7 @@ class WeekendEventTest {
     fun `주말 이벤트는 주말에 할인 혜택을 받을 수 있다`(reservationDate: Int) {
         //given
         val reservation = Reservation(listOf(OrderMenu(MUSHROOM_SOUP, 2)), reservationDate)
-        val weekendEvent = WeekendEvent(eventType = eventType, reservation = reservation)
+        val weekendEvent = WeekendEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = weekendEvent.isEligibleForEvent()
@@ -72,7 +72,7 @@ class WeekendEventTest {
     fun `메인 메뉴가 예약 메뉴에 없을 경우 할인 금액은 없다`() {
         //given
         val reservation = Reservation(listOf(OrderMenu(MUSHROOM_SOUP, 2)), 1)
-        val weekendEvent = WeekendEvent(eventType = eventType, reservation = reservation)
+        val weekendEvent = WeekendEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = weekendEvent.calculateDiscountAmount()
@@ -86,7 +86,7 @@ class WeekendEventTest {
     fun `디저트 메뉴가 예약 메뉴에 있을 한 개만 있을 경우 2023원이 할인된다`() {
         //given
         val reservation = Reservation(listOf(OrderMenu(T_BONE_STEAK, 1)), 1)
-        val weekendEvent = WeekendEvent(eventType = eventType, reservation = reservation)
+        val weekendEvent = WeekendEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = weekendEvent.calculateDiscountAmount()
@@ -100,7 +100,7 @@ class WeekendEventTest {
     fun `메인 메뉴가 예약 메뉴에 있을 경우 하나 당 2023원이 할인된다`() {
         //given
         val reservation = Reservation(listOf(OrderMenu(T_BONE_STEAK, 2)), 1)
-        val weekendEvent = WeekendEvent(eventType = eventType, reservation = reservation)
+        val weekendEvent = WeekendEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = weekendEvent.calculateDiscountAmount()

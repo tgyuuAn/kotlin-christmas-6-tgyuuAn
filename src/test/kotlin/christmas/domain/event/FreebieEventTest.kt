@@ -1,6 +1,6 @@
 package christmas.domain.event
 
-import christmas.domain.event.EventType.*
+import christmas.domain.event.Event.*
 import christmas.domain.menu.MenuItem.*
 import christmas.domain.Reservation
 import christmas.domain.menu.OrderMenu
@@ -15,7 +15,7 @@ class FreebieEventTest {
     fun `예약 메뉴가 음료로만 되어 있을 경우 혜택을 받을 수 없다`() {
         //given
         val reservation = Reservation(listOf(OrderMenu(CHAMPAGNE, 1)), 3)
-        val freebieEvent = FreebieEvent(eventType = eventType, reservation = reservation)
+        val freebieEvent = FreebieEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = freebieEvent.isEligibleForEvent()
@@ -28,7 +28,7 @@ class FreebieEventTest {
     fun `총 예약 금액이 10000원 이하일 경우 예약이 불가능하다`() {
         //given
         val reservation = Reservation(listOf(OrderMenu(MUSHROOM_SOUP, 1)), 3)
-        val freebieEvent = FreebieEvent(eventType = eventType, reservation = reservation)
+        val freebieEvent = FreebieEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = freebieEvent.isEligibleForEvent()
@@ -41,7 +41,7 @@ class FreebieEventTest {
     fun `총 구매 금액이 120000원 이하일 경우 증정 혜택을 받지 못한다`() {
         //given
         val reservation = Reservation(listOf(OrderMenu(MUSHROOM_SOUP, 1)), 3)
-        val freebieEvent = FreebieEvent(eventType = eventType, reservation = reservation)
+        val freebieEvent = FreebieEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = freebieEvent.isEligibleForEvent()
@@ -54,7 +54,7 @@ class FreebieEventTest {
     fun `총 구매 금액이 120000원 이상일 경우 증정 혜택을 받는다`() {
         //given
         val reservation = Reservation(generateDeliciousFood(), 3)
-        val freebieEvent = FreebieEvent(eventType = eventType, reservation = reservation)
+        val freebieEvent = FreebieEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = freebieEvent.isEligibleForEvent()
@@ -67,7 +67,7 @@ class FreebieEventTest {
     fun `총 구매 금액이 120000원 이상일 경우 증정 혜택은 샴페인 한 개의 가격이다`() {
         //given
         val reservation = Reservation(generateDeliciousFood(), 3)
-        val freebieEvent = FreebieEvent(eventType = eventType, reservation = reservation)
+        val freebieEvent = FreebieEvent(event = eventType, reservation = reservation)
 
         //when
         val actual = freebieEvent.calculateDiscountAmount()

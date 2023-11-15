@@ -4,40 +4,28 @@ import christmas.domain.Benefit
 import christmas.domain.menu.OrderMenu
 import christmas.domain.Reservation
 import christmas.domain.event.EventFactory
-import christmas.domain.event.EventType
-import christmas.domain.event.FreebieEvent
+import christmas.domain.event.Event
 import christmas.validator.InputValidator.validateInputIsInt
 import christmas.util.OrderParser.parseOrders
-import christmas.util.StringFormatter
 import christmas.view.InputView
-import christmas.view.OutputView.printFreebie
-import christmas.view.OutputView.printMenus
-import christmas.view.OutputView.printTotalAmount
-import christmas.view.OutputView.printTotalBenefit
-import christmas.view.OutputView.printTotalBenefitDetail
-import christmas.view.OutputView.printWelcomeMessage
+import christmas.view.OutputView.printReservationDetails
 
 class Controller {
     fun run() {
-        val reservationDate = getReservationDate()
-        val reservationOrders = getReservationOrders()
-        val reservation = Reservation(reservationOrders, reservationDate)
-
-        printWelcomeMessage(reservation)
-        printMenus(reservation)
-        printTotalAmount(reservation)
-
-        val calculatedBenefit = caculateTotalBenefits(reservation)
-        printFreebie(calculatedBenefit)
-        printTotalBenefitDetail(calculatedBenefit)
-        printTotalBenefit(calculatedBenefit)
-        println("<할인 후 예상 결제 금액>")
-        println(StringFormatter.decimalFormat.format(reservation.getTotalAmount() - calculatedBenefit.getTotalDiscountedAmount()) + "원")
+        val reservation = createReservation()
+        val calculatedBenefit = calculateTotalBenefits(reservation)
+        printReservationDetails(reservation, calculatedBenefit)
     }
 
-    private fun caculateTotalBenefits(reservation: Reservation): Benefit {
+    private fun createReservation(): Reservation {
+        val reservationDate = getReservationDate()
+        val reservationOrders = getReservationOrders()
+        return Reservation(reservationOrders, reservationDate)
+    }
+
+    private fun calculateTotalBenefits(reservation: Reservation): Benefit {
         val benefit = Benefit()
-        EventType.values().forEach { eventType ->
+        Event.values().forEach { eventType ->
             val event = EventFactory.getEvent(eventType, reservation)
             if (event.isEligibleForEvent()) {
                 val discountAmount = event.calculateDiscountAmount()
