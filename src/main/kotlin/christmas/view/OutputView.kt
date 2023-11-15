@@ -7,7 +7,6 @@ import christmas.domain.badge.Badge.Companion.getBadge
 import christmas.domain.event.Event.*
 import christmas.domain.menu.MenuItem.CHAMPAGNE
 import christmas.util.StringFormatter.decimalFormat
-import christmas.util.StringFormatter.formatAmountWithWon
 
 class OutputView {
     fun printReservationDetails(reservation: Reservation, calculatedBenefit: Benefit) {
@@ -60,26 +59,26 @@ class OutputView {
         println("<혜택 내역>")
         if (benefit.discountedAmount.isEmpty()) {
             println("없음")
-            println()
-            return
+        } else {
+            println(benefit.toString())
         }
-        println(benefit.toString())
+        println()
     }
 
     private fun printTotalBenefit(benefit: Benefit) {
         val totalDiscountedAmount = benefit.getTotalDiscountedAmount()
         println("<총혜택 금액>")
         if (totalDiscountedAmount > 0) {
-            println("-" + formatAmountWithWon(decimalFormat.format(benefit.getTotalDiscountedAmount())))
+            println("-" + decimalFormat.format(benefit.getTotalDiscountedAmount()) + "원")
         } else {
-            println(formatAmountWithWon(decimalFormat.format(benefit.getTotalDiscountedAmount())))
+            println(decimalFormat.format(benefit.getTotalDiscountedAmount()) + "원")
         }
         println()
     }
 
     private fun printExpectedPaymentAmount(reservation: Reservation, benefit: Benefit) {
         println("<할인 후 예상 결제 금액>")
-        println(formatAmountWithWon(decimalFormat.format(reservation.getTotalAmount() - benefit.getTotalDiscountedAmount())))
+        println(decimalFormat.format(reservation.getTotalAmount() - benefit.getTotalDiscountedAmount()) + "원")
         println()
     }
 

@@ -21,12 +21,10 @@ object OrderParser {
 
     private fun getMenuItemOrThrow(input: String): MenuItem =
         validateInputIsMenuItem(input, INVALID_ORDER_MESSAGE)
-            .onFailure { throw it }
             .getOrThrow()
 
     private fun getMenuCountOrThrow(input: String): Int =
         validateInputIsInt(input, INVALID_ORDER_MESSAGE)
-            .onFailure { throw it }
             .getOrThrow()
 
 }

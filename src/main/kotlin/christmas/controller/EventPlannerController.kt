@@ -7,6 +7,7 @@ import christmas.domain.event.EventFactory
 import christmas.domain.event.Event
 import christmas.validator.InputValidator.validateInputIsInt
 import christmas.util.OrderParser.parseOrders
+import christmas.validator.InputValidator.validateDateInput
 import christmas.view.InputView
 import christmas.view.OutputView
 
@@ -32,9 +33,8 @@ class EventPlannerController(
         while (reservationDate == null) {
             val input = inputView.readDate()
             try {
-                reservationDate = validateInputIsInt(input, "유효하지 않은 날짜입니다.")
-                    .onFailure { throw it }
-                    .getOrNull()
+                reservationDate = validateDateInput(input, "유효하지 않은 날짜입니다.")
+                    .getOrThrow()
             } catch (e: IllegalArgumentException) {
                 println(e.message)
             }
