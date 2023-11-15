@@ -6,10 +6,13 @@ import christmas.validator.InputValidator.validateInputIsInt
 import christmas.validator.InputValidator.validateInputIsMenuItem
 
 object OrderParser {
+
+    private const val INVALID_ORDER_MESSAGE = "유효하지 않은 주문입니다."
+
     fun parseOrders(input: String): List<OrderMenu> =
         input.split(",").map { parseOrder(it) }
 
-    fun parseOrder(order: String): OrderMenu {
+    private fun parseOrder(order: String): OrderMenu {
         val ordersSplited = order.trim().split("-").map { it.trim() }
         val menuItem = getMenuItemOrThrow(ordersSplited[0])
         val menuCount = getMenuCountOrThrow(ordersSplited[1])
@@ -17,12 +20,12 @@ object OrderParser {
     }
 
     private fun getMenuItemOrThrow(input: String): MenuItem =
-        validateInputIsMenuItem(input, "유효하지 않은 주문입니다.")
+        validateInputIsMenuItem(input, INVALID_ORDER_MESSAGE)
             .onFailure { throw it }
             .getOrThrow()
 
     private fun getMenuCountOrThrow(input: String): Int =
-        validateInputIsInt(input, "유효하지 않은 주문입니다.")
+        validateInputIsInt(input, INVALID_ORDER_MESSAGE)
             .onFailure { throw it }
             .getOrThrow()
 

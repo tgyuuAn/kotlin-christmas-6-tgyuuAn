@@ -18,7 +18,7 @@ enum class MenuItem(val displayName: String, val menuCategory: MenuCategory, val
     CHAMPAGNE("샴페인", MenuCategory.BEVERAGE, 25000);
 
     companion object {
-        fun convertStringToMenuItemOrNull(input: String): MenuItem? {
+        fun convertInputToMenuItemOrNull(input: String): MenuItem? {
             MenuItem.values().forEach { menuItem ->
                 if (menuItem.displayName == input) {
                     return menuItem

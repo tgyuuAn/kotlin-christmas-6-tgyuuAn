@@ -1,7 +1,7 @@
 package christmas.validator
 
 import christmas.domain.menu.MenuItem
-import christmas.domain.menu.MenuItem.Companion.convertStringToMenuItemOrNull
+import christmas.domain.menu.MenuItem.Companion.convertInputToMenuItemOrNull
 import christmas.exception.ValidationException
 
 object InputValidator {
@@ -11,7 +11,7 @@ object InputValidator {
         } ?: Result.failure(ValidationException(message))
 
     fun validateInputIsMenuItem(input: String, message: String): Result<MenuItem> =
-        convertStringToMenuItemOrNull(input)?.let {
+        convertInputToMenuItemOrNull(input)?.let {
             Result.success(it)
         } ?: Result.failure(ValidationException(message))
 }
