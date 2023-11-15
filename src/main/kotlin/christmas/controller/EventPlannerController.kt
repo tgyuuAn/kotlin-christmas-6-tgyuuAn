@@ -3,9 +3,6 @@ package christmas.controller
 import christmas.domain.Benefit
 import christmas.domain.menu.OrderMenu
 import christmas.domain.Reservation
-import christmas.domain.event.EventFactory
-import christmas.domain.event.Event
-import christmas.validator.InputValidator.validateInputIsInt
 import christmas.util.OrderParser.parseOrders
 import christmas.validator.InputValidator.validateDateInput
 import christmas.view.InputView
@@ -23,8 +20,16 @@ class EventPlannerController(
 
     private fun createReservation(): Reservation {
         val reservationDate = getReservationDate()
-        val reservationOrders = getReservationOrders()
-        return Reservation(reservationOrders, reservationDate)
+        var reservation: Reservation? = null
+        while (reservation == null) {
+            try {
+                val reservationOrders = getReservationOrders()
+                reservation = Reservation(reservationOrders, reservationDate)
+            } catch (e: IllegalStateException) {
+                println(e.message)
+            }
+        }
+        return reservation
     }
 
     private fun getReservationDate(): Int {

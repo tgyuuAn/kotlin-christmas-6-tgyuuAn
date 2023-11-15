@@ -15,19 +15,16 @@ class Benefit(private val reservation: Reservation) {
         calculateTotalBenefits()
     }
 
-    private fun calculateTotalBenefits() {
-        Event.values().forEach { eventType ->
-            val event = EventFactory.getEvent(eventType, reservation)
-            if (event.isEligibleForEvent()) {
-                val discountAmount = event.calculateDiscountAmount()
-                accumulateBenefit(eventType, discountAmount)
-            }
+    private fun calculateTotalBenefits() = Event.values().forEach { eventType ->
+        val event = EventFactory.getEvent(eventType, reservation)
+        if (event.isEligibleForEvent()) {
+            val discountAmount = event.calculateDiscountAmount()
+            accumulateBenefit(eventType, discountAmount)
         }
     }
 
-    private fun accumulateBenefit(event: Event, discountedAmount: Int) {
+    private fun accumulateBenefit(event: Event, discountedAmount: Int) =
         _discountedAmount.put(event, discountedAmount)
-    }
 
     fun getTotalDiscountedAmount(): Int {
         var totalDiscountedAmount = 0
@@ -45,7 +42,7 @@ class Benefit(private val reservation: Reservation) {
         val result = StringBuilder()
         _discountedAmount.forEach { eventType, amount ->
             if (amount != 0) {
-                result.append("${eventType.eventDescription}: -" + decimalFormat.format(amount)+"\n")
+                result.append("${eventType.eventDescription}: -" + decimalFormat.format(amount) + "\n")
             }
         }
         return result.toString().trim()
