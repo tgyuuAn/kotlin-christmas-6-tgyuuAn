@@ -1,6 +1,7 @@
 package christmas.domain.event
 
 import christmas.domain.Reservation
+import christmas.domain.event.Event.*
 import christmas.domain.event.FreebieEvent.Companion.MINIMUM_AMOUNT_FOR_FREEBIE
 
 abstract class WoowaEvent(
@@ -25,7 +26,7 @@ abstract class WoowaEvent(
     }
 
     private fun isTotalAmountEligible(): Boolean {
-        if (event == Event.FREEBIE) {
+        if (event == FREEBIE) {
             return reservation.getTotalAmount() >= MINIMUM_AMOUNT_FOR_FREEBIE
         }
         return reservation.getTotalAmount() >= EVENT_MINIMUM_AMOUNT
