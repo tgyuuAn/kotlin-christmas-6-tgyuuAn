@@ -7,7 +7,6 @@ data class Reservation(
     val orderedMenus: List<OrderMenu>,
     val visitDate: Int,
 ) {
-
     init {
         validateOrderMenusExceeded()
     }
@@ -18,24 +17,10 @@ data class Reservation(
         }
     }
 
-    fun getTotalAmount(): Int {
-        var totalAmount = 0
-        orderedMenus.forEach { orderedMenu ->
-            val menuPrice = orderedMenu.menuItem.price
-            val menuCount = orderedMenu.orderedCount
-            totalAmount += menuPrice * menuCount
-        }
-        return totalAmount
-    }
+    fun getTotalAmount(): Int = orderedMenus.sumOf { it.menuItem.price * it.orderedCount }
 
     fun isAllMenusAreBeverage(): Boolean =
         orderedMenus.all { it.menuItem.menuCategory == MenuCategory.BEVERAGE }
 
-    private fun getTotalMenusCount(): Int {
-        var totalOrderMenusCount = 0
-        orderedMenus.map { orderMenu ->
-            totalOrderMenusCount += orderMenu.orderedCount
-        }
-        return totalOrderMenusCount
-    }
+    private fun getTotalMenusCount(): Int = orderedMenus.sumOf { it.orderedCount }
 }

@@ -13,6 +13,7 @@ class EventPlannerController(
     private val outputView: OutputView
 ) {
     fun run() {
+        outputView.printPreviewMessage()
         val reservation = createReservation()
         val benefit = Benefit(reservation)
         outputView.printReservationDetails(reservation, benefit)
