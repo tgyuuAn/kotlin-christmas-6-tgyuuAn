@@ -1,13 +1,13 @@
 package christmas.view
 
-import christmas.domain.Benefit
-import christmas.domain.menu.OrderMenu
-import christmas.domain.Reservation
 import christmas.domain.Badge.Companion.getBadge
+import christmas.domain.Benefit
+import christmas.domain.Reservation
+import christmas.domain.menu.OrderMenu
 import christmas.util.StringFormatter.decimalFormat
 
 class OutputView {
-    fun printPreviewMessage(){
+    fun printPreviewMessage() {
         println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.")
     }
 

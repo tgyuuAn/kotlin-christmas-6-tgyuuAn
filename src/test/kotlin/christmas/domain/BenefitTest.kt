@@ -4,7 +4,6 @@ import christmas.domain.menu.MenuItem
 import christmas.domain.menu.OrderMenu
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import kotlin.math.exp
 
 class BenefitTest {
     @Test

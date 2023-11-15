@@ -1,7 +1,7 @@
 package christmas.domain
 
 import christmas.domain.event.Event
-import christmas.domain.event.Event.*
+import christmas.domain.event.Event.FREEBIE
 import christmas.domain.event.EventFactory
 import christmas.domain.event.FreebieEvent.Companion.EVENT_FREEBIE
 import christmas.domain.event.FreebieEvent.Companion.FREEBIE_COUNT

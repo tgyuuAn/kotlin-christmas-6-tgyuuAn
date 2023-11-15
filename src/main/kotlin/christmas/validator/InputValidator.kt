@@ -9,7 +9,7 @@ import christmas.util.Calendar.DECEMBER_START_DAY
 object InputValidator {
     fun validateDateInput(input: String, message: String): Result<Int> {
         val date = validateInputIsInt(input, message).getOrThrow()
-        return when(date){
+        return when (date) {
             in DECEMBER_START_DAY..DECEMBER_END_DAY -> Result.success(date)
             else -> Result.failure(ValidationException(message))
         }

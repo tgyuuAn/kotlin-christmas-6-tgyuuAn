@@ -1,8 +1,9 @@
 package christmas.domain.event
 
-import christmas.domain.event.Event.*
-import christmas.domain.menu.MenuItem.*
 import christmas.domain.Reservation
+import christmas.domain.event.Event.CHRISTMAS_D_DAY
+import christmas.domain.menu.MenuItem.CHAMPAGNE
+import christmas.domain.menu.MenuItem.MUSHROOM_SOUP
 import christmas.domain.menu.OrderMenu
 import christmas.util.MoneyUtil.HUNDRED_UNIT
 import christmas.util.MoneyUtil.THOUSAND_UNIT
@@ -28,7 +29,7 @@ class ChristmasDdayEventTest {
 
         //then
         val actual = christmasDdayEvent.isEligibleForEvent()
-        assertThat(actual).isFalse()
+        assertThat(actual).isFalse
     }
 
     @ParameterizedTest
@@ -44,7 +45,7 @@ class ChristmasDdayEventTest {
 
         //then
         val actual = christmasDdayEvent.isEligibleForEvent()
-        assertThat(actual).isTrue()
+        assertThat(actual).isTrue
     }
 
     @Test
@@ -59,7 +60,7 @@ class ChristmasDdayEventTest {
         val actual = christmasDdayEvent.isEligibleForEvent()
 
         //then
-        assertThat(actual).isFalse()
+        assertThat(actual).isFalse
     }
 
     @Test
@@ -73,7 +74,7 @@ class ChristmasDdayEventTest {
         val actual = christmasDdayEvent.isEligibleForEvent()
 
         //then
-        assertThat(actual).isFalse()
+        assertThat(actual).isFalse
     }
 
 
@@ -89,7 +90,7 @@ class ChristmasDdayEventTest {
         val actual = christmasDdayEvent.isEligibleForEvent()
 
         //then
-        assertThat(actual).isTrue()
+        assertThat(actual).isTrue
     }
 
     @ParameterizedTest

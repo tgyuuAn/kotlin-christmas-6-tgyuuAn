@@ -1,7 +1,7 @@
 package christmas.domain.event
 
-import christmas.domain.menu.MenuItem.*
 import christmas.domain.Reservation
+import christmas.domain.menu.MenuItem.CHAMPAGNE
 import christmas.util.Calendar.DECEMBER_END_DAY
 import christmas.util.Calendar.DECEMBER_START_DAY
 

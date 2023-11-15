@@ -1,6 +1,6 @@
 package christmas.domain
 
-import christmas.domain.menu.MenuCategory
+import christmas.domain.menu.MenuCategory.BEVERAGE
 import christmas.domain.menu.OrderMenu
 
 data class Reservation(
@@ -20,7 +20,7 @@ data class Reservation(
     fun getTotalAmount(): Int = orderedMenus.sumOf { it.menuItem.price * it.orderedCount }
 
     fun isAllMenusAreBeverage(): Boolean =
-        orderedMenus.all { it.menuItem.menuCategory == MenuCategory.BEVERAGE }
+        orderedMenus.all { it.menuItem.menuCategory == BEVERAGE }
 
     private fun getTotalMenusCount(): Int = orderedMenus.sumOf { it.orderedCount }
 }
