@@ -16,26 +16,14 @@ class EventPlannerController(
 ) {
     fun run() {
         val reservation = createReservation()
-        val calculatedBenefit = calculateTotalBenefits(reservation)
-        outputView.printReservationDetails(reservation, calculatedBenefit)
+        val benefit = Benefit(reservation)
+        outputView.printReservationDetails(reservation, benefit)
     }
 
     private fun createReservation(): Reservation {
         val reservationDate = getReservationDate()
         val reservationOrders = getReservationOrders()
         return Reservation(reservationOrders, reservationDate)
-    }
-
-    private fun calculateTotalBenefits(reservation: Reservation): Benefit {
-        val benefit = Benefit()
-        Event.values().forEach { eventType ->
-            val event = EventFactory.getEvent(eventType, reservation)
-            if (event.isEligibleForEvent()) {
-                val discountAmount = event.calculateDiscountAmount()
-                benefit.accumulateBenefit(eventType, discountAmount)
-            }
-        }
-        return benefit
     }
 
     private fun getReservationDate(): Int {
