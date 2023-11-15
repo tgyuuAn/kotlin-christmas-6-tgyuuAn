@@ -15,10 +15,13 @@ class WeekendEvent(
     }
 
     override fun calculateDiscountAmount(): Int {
-        val totalDessertCount = reservation.orderedMenus.count { menuItem ->
-            menuItem.menuItem.menuCategory == MAIN
+        var totalMainCount = 0
+        reservation.orderedMenus.forEach { menuItem ->
+            if(menuItem.menuItem.menuCategory == MAIN){
+                totalMainCount += menuItem.orderedCount
+            }
         }
-        return totalDessertCount * DISCOUNT_PER_MAIN
+        return totalMainCount * DISCOUNT_PER_MAIN
     }
 
     companion object {

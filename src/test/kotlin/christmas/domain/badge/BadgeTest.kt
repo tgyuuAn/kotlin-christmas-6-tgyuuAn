@@ -12,10 +12,9 @@ class BadgeTest {
         //given
         val benefit = Benefit()
         benefit.accumulateBenefit(Event.FREEBIE, 25000)
-        val badgeEvent = BadgeEvent()
 
         //when
-        val actual =badgeEvent.getBadge(benefit)
+        val actual =Badge.getBadge(benefit)
 
         //then
         val expected = SANTA
@@ -27,10 +26,9 @@ class BadgeTest {
         //given
         val benefit = Benefit()
         benefit.accumulateBenefit(Event.WEEKEND, 10000)
-        val badgeEvent = BadgeEvent()
 
         //when
-        val actual =badgeEvent.getBadge(benefit)
+        val actual =Badge.getBadge(benefit)
 
         //then
         val expected = TREE
@@ -42,10 +40,9 @@ class BadgeTest {
         //given
         val benefit = Benefit()
         benefit.accumulateBenefit(Event.WEEKEND, 7000)
-        val badgeEvent = BadgeEvent()
 
         //when
-        val actual =badgeEvent.getBadge(benefit)
+        val actual =Badge.getBadge(benefit)
 
         //then
         val expected = STAR
@@ -57,10 +54,9 @@ class BadgeTest {
         //given
         val benefit = Benefit()
         benefit.accumulateBenefit(Event.WEEKEND, 3000)
-        val badgeEvent = BadgeEvent()
 
         //when
-        val actual =badgeEvent.getBadge(benefit)
+        val actual =Badge.getBadge(benefit)
 
         //then
         val expected = NOTHING
