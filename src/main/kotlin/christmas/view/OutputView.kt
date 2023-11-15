@@ -41,7 +41,7 @@ class OutputView {
 
     private fun printTotalAmount(orderedMenus: Reservation) {
         println("<할인 전 총주문 금액>")
-        println("-" + decimalFormat.format(orderedMenus.getTotalAmount()) + "원")
+        println("-" + decimalFormat.format(orderedMenus.getTotalAmount()))
         println()
     }
 
@@ -69,16 +69,16 @@ class OutputView {
         val totalDiscountedAmount = benefit.getTotalDiscountedAmount()
         println("<총혜택 금액>")
         if (totalDiscountedAmount > 0) {
-            println("-" + decimalFormat.format(benefit.getTotalDiscountedAmount()) + "원")
+            println("-" + decimalFormat.format(benefit.getTotalDiscountedAmount()))
         } else {
-            println(decimalFormat.format(benefit.getTotalDiscountedAmount()) + "원")
+            println(decimalFormat.format(benefit.getTotalDiscountedAmount()))
         }
         println()
     }
 
     private fun printExpectedPaymentAmount(reservation: Reservation, benefit: Benefit) {
         println("<할인 후 예상 결제 금액>")
-        println(decimalFormat.format(reservation.getTotalAmount() - benefit.getTotalDiscountedAmount()) + "원")
+        println(decimalFormat.format(reservation.getTotalAmount() - benefit.getTotalDiscountedAmount()))
         println()
     }
 

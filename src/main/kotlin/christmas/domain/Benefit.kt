@@ -45,7 +45,7 @@ class Benefit(private val reservation: Reservation) {
 
         _discountedAmount.forEach { eventType, amount ->
             if (amount != 0) {
-                result.append("${eventType.eventDescription}: -" + decimalFormat.format(amount) + "원\n")
+                result.append("${eventType.eventDescription}: -" + decimalFormat.format(amount)+"\n")
             }
         }
         return result.toString().trim()
