@@ -1,7 +1,7 @@
 package christmas.domain.event
 
-import christmas.domain.menu.MenuCategory.*
 import christmas.domain.Reservation
+import christmas.domain.menu.MenuCategory.MAIN
 import christmas.util.Calendar
 
 class WeekendEvent(

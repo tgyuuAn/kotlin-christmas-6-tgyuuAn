@@ -1,9 +1,11 @@
 package christmas.domain.event
 
-import christmas.domain.event.Event.*
-import christmas.domain.menu.MenuItem.*
 import christmas.domain.Reservation
+import christmas.domain.event.Event.WEEK_DAY
 import christmas.domain.event.WeekdayEvent.Companion.DISCOUNT_PER_BEVERAGE
+import christmas.domain.menu.MenuItem.CHAMPAGNE
+import christmas.domain.menu.MenuItem.CHOCOLATE_CAKE
+import christmas.domain.menu.MenuItem.MUSHROOM_SOUP
 import christmas.domain.menu.OrderMenu
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -25,7 +27,7 @@ class WeekdayEventTest {
         val actual = weekdayEvent.isEligibleForEvent()
 
         //then
-        assertThat(actual).isFalse()
+        assertThat(actual).isFalse
     }
 
     @Test
@@ -38,7 +40,7 @@ class WeekdayEventTest {
         val actual = weekdayEvent.isEligibleForEvent()
 
         //then
-        assertThat(actual).isFalse()
+        assertThat(actual).isFalse
     }
 
     @Test
@@ -51,7 +53,7 @@ class WeekdayEventTest {
         val actual = weekdayEvent.isEligibleForEvent()
 
         //then
-        assertThat(actual).isFalse()
+        assertThat(actual).isFalse
     }
 
     @ParameterizedTest
@@ -65,7 +67,7 @@ class WeekdayEventTest {
         val actual = weekdayEvent.isEligibleForEvent()
 
         //then
-        assertThat(actual).isTrue()
+        assertThat(actual).isTrue
     }
 
     @Test

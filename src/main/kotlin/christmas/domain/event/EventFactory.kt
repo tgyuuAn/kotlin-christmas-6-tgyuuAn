@@ -1,7 +1,11 @@
 package christmas.domain.event
 
-import christmas.domain.event.Event.*
 import christmas.domain.Reservation
+import christmas.domain.event.Event.CHRISTMAS_D_DAY
+import christmas.domain.event.Event.FREEBIE
+import christmas.domain.event.Event.STARRED_DAY
+import christmas.domain.event.Event.WEEKEND
+import christmas.domain.event.Event.WEEK_DAY
 
 object EventFactory {
     fun getEvent(event: Event, reservation: Reservation): WoowaEvent = when (event) {

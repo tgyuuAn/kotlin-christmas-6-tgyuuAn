@@ -1,7 +1,7 @@
 package christmas.domain.event
 
 import christmas.domain.Reservation
-import christmas.domain.event.Event.*
+import christmas.domain.event.Event.FREEBIE
 import christmas.domain.event.FreebieEvent.Companion.MINIMUM_AMOUNT_FOR_FREEBIE
 
 abstract class WoowaEvent(

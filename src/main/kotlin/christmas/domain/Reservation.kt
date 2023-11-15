@@ -1,7 +1,6 @@
 package christmas.domain
 
-import christmas.domain.menu.MenuCategory
-import christmas.domain.menu.MenuCategory.*
+import christmas.domain.menu.MenuCategory.BEVERAGE
 import christmas.domain.menu.OrderMenu
 
 data class Reservation(

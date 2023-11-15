@@ -1,10 +1,14 @@
 package christmas.domain.badge
 
 import christmas.domain.Badge
+import christmas.domain.Badge.NOTHING
+import christmas.domain.Badge.SANTA
+import christmas.domain.Badge.STAR
+import christmas.domain.Badge.TREE
 import christmas.domain.Benefit
 import christmas.domain.Reservation
-import christmas.domain.Badge.*
-import christmas.domain.menu.MenuItem.*
+import christmas.domain.menu.MenuItem.CHOCOLATE_CAKE
+import christmas.domain.menu.MenuItem.ICE_CREAM
 import christmas.domain.menu.OrderMenu
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
