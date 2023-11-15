@@ -1,6 +1,4 @@
-package christmas.domain.badge
-
-import christmas.domain.Benefit
+package christmas.domain
 
 enum class Badge(val badgeName: String, val minimumDiscountedAmount: Int) {
     SANTA("산타", 20000),

@@ -3,7 +3,7 @@ package christmas.view
 import christmas.domain.Benefit
 import christmas.domain.menu.OrderMenu
 import christmas.domain.Reservation
-import christmas.domain.badge.Badge.Companion.getBadge
+import christmas.domain.Badge.Companion.getBadge
 import christmas.domain.event.Event.*
 import christmas.domain.menu.MenuItem.CHAMPAGNE
 import christmas.util.StringFormatter.decimalFormat

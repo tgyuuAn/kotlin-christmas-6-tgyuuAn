@@ -1,8 +1,9 @@
 package christmas.domain.badge
 
+import christmas.domain.Badge
 import christmas.domain.Benefit
 import christmas.domain.Reservation
-import christmas.domain.badge.Badge.*
+import christmas.domain.Badge.*
 import christmas.domain.menu.MenuItem.*
 import christmas.domain.menu.OrderMenu
 import org.assertj.core.api.Assertions.assertThat
