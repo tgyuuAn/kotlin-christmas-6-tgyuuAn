@@ -41,7 +41,7 @@ class OutputView {
 
     private fun printTotalAmount(orderedMenus: Reservation) {
         println("<할인 전 총주문 금액>")
-        println("-" + decimalFormat.format(orderedMenus.getTotalAmount()))
+        println(decimalFormat.format(orderedMenus.getTotalAmount()))
         println()
     }
 

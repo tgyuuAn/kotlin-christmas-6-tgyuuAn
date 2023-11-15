@@ -12,6 +12,12 @@ data class Reservation(
         validateOrderMenusExceeded()
     }
 
+    private fun validateOrderMenusExceeded() {
+        check(getTotalMenusCount() <= 20) {
+            "[ERROR] 주문할 수 있는 메뉴의 개수는 최대 20개 입니다."
+        }
+    }
+
     fun getTotalAmount(): Int {
         var totalAmount = 0
         orderedMenus.forEach { orderedMenu ->
@@ -24,12 +30,6 @@ data class Reservation(
 
     fun isAllMenusAreBeverage(): Boolean =
         orderedMenus.all { it.menuItem.menuCategory == MenuCategory.BEVERAGE }
-
-    private fun validateOrderMenusExceeded() {
-        check(getTotalMenusCount() <= 20) {
-            "[ERROR] 주문할 수 있는 메뉴의 개수는 최대 20개 입니다."
-        }
-    }
 
     private fun getTotalMenusCount(): Int {
         var totalOrderMenusCount = 0

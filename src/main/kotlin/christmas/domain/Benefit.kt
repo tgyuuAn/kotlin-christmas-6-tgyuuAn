@@ -7,7 +7,6 @@ import christmas.util.StringFormatter.decimalFormat
 class Benefit(private val reservation: Reservation) {
 
     private val _discountedAmount: HashMap<Event, Int> = hashMapOf()
-
     val discountedAmount: Map<Event, Int>
         get() = _discountedAmount.toMap()
 
