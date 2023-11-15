@@ -1,8 +1,10 @@
 package christmas.domain.badge
 
 import christmas.domain.Benefit
+import christmas.domain.Reservation
 import christmas.domain.badge.Badge.*
-import christmas.domain.event.Event
+import christmas.domain.menu.MenuItem.*
+import christmas.domain.menu.OrderMenu
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -10,11 +12,11 @@ class BadgeTest {
     @Test
     fun `총 할인 금액이 20000원 이상일 경우 산타 뱃지를 받는다`() {
         //given
-        val benefit = Benefit()
-        benefit.accumulateBenefit(Event.FREEBIE, 25000)
+        val reservation = Reservation(listOf(OrderMenu(ICE_CREAM, 10)), 3)
+        val benefit = Benefit(reservation)
 
         //when
-        val actual =Badge.getBadge(benefit)
+        val actual = Badge.getBadge(benefit)
 
         //then
         val expected = SANTA
@@ -22,13 +24,13 @@ class BadgeTest {
     }
 
     @Test
-    fun `총 할인 금액이 10000원 이상일 경우 트리 뱃지를 받는다`() {
+    fun `총 할인 금액이 10000원 이상, 19999원 이하일 경우 트리 뱃지를 받는다`() {
         //given
-        val benefit = Benefit()
-        benefit.accumulateBenefit(Event.WEEKEND, 10000)
+        val reservation = Reservation(listOf(OrderMenu(ICE_CREAM, 5)), 3)
+        val benefit = Benefit(reservation)
 
         //when
-        val actual =Badge.getBadge(benefit)
+        val actual = Badge.getBadge(benefit)
 
         //then
         val expected = TREE
@@ -36,13 +38,13 @@ class BadgeTest {
     }
 
     @Test
-    fun `총 할인 금액이 5000원 이상일 경우 별 뱃지를 받는다`() {
+    fun `총 할인 금액이 5000원 이상, 9999원 이하일 경우 별 뱃지를 받는다`() {
         //given
-        val benefit = Benefit()
-        benefit.accumulateBenefit(Event.WEEKEND, 7000)
+        val reservation = Reservation(listOf(OrderMenu(ICE_CREAM, 3)), 3)
+        val benefit = Benefit(reservation)
 
         //when
-        val actual =Badge.getBadge(benefit)
+        val actual = Badge.getBadge(benefit)
 
         //then
         val expected = STAR
@@ -52,11 +54,11 @@ class BadgeTest {
     @Test
     fun `총 할인 금액이 5000원 미만일 경우 뱃지를 받지 못한다`() {
         //given
-        val benefit = Benefit()
-        benefit.accumulateBenefit(Event.WEEKEND, 3000)
+        val reservation = Reservation(listOf(OrderMenu(CHOCOLATE_CAKE, 1)), 3)
+        val benefit = Benefit(reservation)
 
         //when
-        val actual =Badge.getBadge(benefit)
+        val actual = Badge.getBadge(benefit)
 
         //then
         val expected = NOTHING

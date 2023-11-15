@@ -6,14 +6,14 @@ import christmas.util.StringFormatter.decimalFormat
 
 class Benefit(private val reservation: Reservation) {
 
-    init{
-        calculateTotalBenefits()
-    }
-
     private val _discountedAmount: HashMap<Event, Int> = hashMapOf()
 
     val discountedAmount: Map<Event, Int>
         get() = _discountedAmount.toMap()
+
+    init {
+        calculateTotalBenefits()
+    }
 
     private fun calculateTotalBenefits() {
         Event.values().forEach { eventType ->
@@ -31,7 +31,7 @@ class Benefit(private val reservation: Reservation) {
 
     fun getTotalDiscountedAmount(): Int {
         var totalDiscountedAmount = 0
-        _discountedAmount.forEach { eventType, amount ->
+        _discountedAmount.forEach { event, amount ->
             totalDiscountedAmount += amount
         }
         return totalDiscountedAmount
@@ -39,11 +39,15 @@ class Benefit(private val reservation: Reservation) {
 
     override fun toString(): String {
         val result = StringBuilder()
+        if (_discountedAmount.isEmpty()) {
+            return "없음"
+        }
+
         _discountedAmount.forEach { eventType, amount ->
             if (amount != 0) {
-                result.append("${eventType.eventDescription} : -" + decimalFormat.format(amount) + "원\n")
+                result.append("${eventType.eventDescription}: -" + decimalFormat.format(amount) + "원\n")
             }
         }
-        return result.toString()
+        return result.toString().trim()
     }
 }
