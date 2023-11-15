@@ -125,13 +125,12 @@
 
 ## 프로그래밍 요구 사항 📜
 
-- [ ] Indent는 depth가 3이 넘지 않도록 구현. 2까지 허용
-- [ ] 함수의 길이가 15라인을 넘어가지 않도록 구현.
-- [ ] else를 지양
-- [ ] 도메인 로직에 단위 테스트를 구현, 단, UI 로직은 제외
-- [ ] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException 를 발생시키고, "[ERROR]" 로 시작하는 에러메시지를 출력 후, 그 부분 부터 다시 입력 받음.
-- [ ] Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
-- [ ] InputView, OutputView 클래스를 참고하여 입출력 클래스를 구현함.
-- [ ] 입력과 출력을 담당하는 클래스를 별도로 구현함.
-- [ ] 해당 클래스의 패키지, 클래스명, 메서드의 반환 타입과 시그니처는 자유롭게 구현할 수 있음.
-
+- [x] Indent는 depth가 3이 넘지 않도록 구현. 2까지 허용
+- [x] 함수의 길이가 15라인을 넘어가지 않도록 구현.
+- [x] else를 지양
+- [x] 도메인 로직에 단위 테스트를 구현, 단, UI 로직은 제외
+- [x] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException 를 발생시키고, "[ERROR]" 로 시작하는 에러메시지를 출력 후, 그 부분 부터 다시 입력 받음.
+- [x] Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
+- [x] InputView, OutputView 클래스를 참고하여 입출력 클래스를 구현함.
+- [x] 입력과 출력을 담당하는 클래스를 별도로 구현함.
+- [x] 해당 클래스의 패키지, 클래스명, 메서드의 반환 타입과 시그니처는 자유롭게 구현할 수 있음.
